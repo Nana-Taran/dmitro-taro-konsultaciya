@@ -7,7 +7,7 @@ function setLang(lang) {
 
   document.querySelectorAll("[data-ua]").forEach((el) => {
     const value = el.dataset[nextLang];
-    if (typeof value === "string") el.textContent = value;
+    if (typeof value === "string") el.innerHTML = value;
   });
 
   document.querySelectorAll("[data-alt-ua]").forEach((el) => {
