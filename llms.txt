@@ -1,0 +1,39 @@
+# Дмитро
+
+Основна мова сайту: українська. Друга мова інтерфейсу: російська через перемикач UA/RU.
+
+Дмитро — таролог, парапсихолог та езотеричний спеціаліст, який працює онлайн зі складними ситуаціями у стосунках.
+
+Основний фокус сайту: діагностика стосунків, таро на стосунки, допомога після сварки, розбір мовчання або охолодження, індивідуальна любовна робота після діагностики, захист і очищення.
+
+Позиціонування: спочатку діагностика й розбір ситуації, потім можливий формат роботи. Сайт не обіцяє гарантований результат, не використовує тиск, залякування або медичні/юридичні/фінансові обіцянки.
+
+Основні сторінки:
+
+- SITE_URL/
+- SITE_URL/posluhy/
+- SITE_URL/diagnostika-otnosheniy/
+- SITE_URL/taro-na-otnosheniya/
+- SITE_URL/posle-ssory/
+- SITE_URL/lyubovnaya-rabota/
+- SITE_URL/zaschita-ochischenie/
+- SITE_URL/stoimost/
+- SITE_URL/o-dmitrii/
+- SITE_URL/faq/
+- SITE_URL/kontakty/
+
+Прямі SEO-сторінки послуг:
+
+- SITE_URL/posluhy/lyubovna-magiya.html
+- SITE_URL/posluhy/pryvorot.html
+- SITE_URL/posluhy/vidvorot.html
+- SITE_URL/posluhy/znyattia-porchi.html
+- SITE_URL/posluhy/ochyshchennia.html
+- SITE_URL/posluhy/zakhyst.html
+- SITE_URL/posluhy/hroshova-magiya.html
+
+AI-readable summaries:
+
+- SITE_URL/ai/dmitrii-summary.md
+- SITE_URL/ai/services.md
+- SITE_URL/ai/faq.md
