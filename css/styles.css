@@ -425,54 +425,93 @@ body.menu-open {
 }
 
 .section-daynight > .container > h2 {
-  letter-spacing: 0.04em;
+  text-align: center;
+  background: linear-gradient(to right, #f4eadc 50%, #3a1422 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .section-daynight > .container > .eyebrow {
+  text-align: center;
   color: var(--accent-gold);
   font-size: 15px;
   letter-spacing: 0.12em;
 }
 
-/* ── Блок 5: trust-grid (шахова розкладка колонок) ── */
+.section-daynight > .container > .lead {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(to right, #f4eadc 45%, #3a1422 58%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Блок 5: trust-grid (3 колонки: ризики | ВЕСЫ | Дмитро) ── */
 .trust-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(14px, 2vw, 24px);
-  margin-top: clamp(28px, 3vw, 44px);
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  margin-top: 32px;
+  align-items: stretch;
 }
 
-/* Ліва колонка — КРЕМОВА (на тёмному фоні) */
+/* Центральна колонка — прозора, показує весы з фону секції */
+.trust-center-scales {
+  flex: 0 0 380px;
+  width: 380px;
+  min-width: 380px;
+}
+
+/* Ліва колонка — ТЕМНА (РИЗИКИ, на темному фоні) */
 .trust-col--light {
-  background: #ede3d4;
-  border-radius: var(--radius-md);
-  padding: clamp(28px, 3vw, 44px) clamp(20px, 2.5vw, 36px);
-  border: 1px solid rgba(244, 234, 220, 0.50);
-  box-shadow: 0 12px 44px rgba(20, 4, 10, 0.40);
-}
-
-/* Права колонка — БОРДОВА (на світлому фоні) */
-.trust-col--dark {
+  flex: 1 1 0;
+  min-width: 0;
+  box-sizing: border-box;
   background: #34101e;
   border-radius: var(--radius-md);
-  padding: clamp(28px, 3vw, 44px) clamp(20px, 2.5vw, 36px);
+  padding: 32px 24px;
   border: 1px solid rgba(110, 40, 60, 0.50);
   border-top: 1px solid rgba(244, 234, 220, 0.20);
   box-shadow: 0 12px 44px rgba(20, 4, 10, 0.55);
 }
 
-/* Заголовок колонки */
+/* Права колонка — ТЕПЛА КРЕМОВА (ДМИТРІЙ) */
+.trust-col--dark {
+  flex: 1 1 0;
+  min-width: 0;
+  box-sizing: border-box;
+  background: rgb(201, 188, 163);
+  border-radius: var(--radius-md);
+  padding: 32px 24px;
+  border: 1px solid rgba(180, 120, 60, 0.35);
+  box-shadow: 0 12px 44px rgba(20, 4, 10, 0.40);
+}
+
+/* Заголовок колонки — іконка + текст в рядок */
+.trust-col-header {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.4vw, 18px);
+  margin-bottom: clamp(20px, 2.5vw, 32px);
+}
+
+
 .trust-col-title {
   font-family: var(--font-display);
-  font-size: clamp(24px, 2.2vw, 34px);
+  font-size: clamp(20px, 1.9vw, 28px);
   font-weight: 500;
-  letter-spacing: 0.04em;
-  margin: 0 0 clamp(20px, 2.5vw, 32px);
-  text-align: center;
-  line-height: 1.1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.15;
 }
-.trust-col--light .trust-col-title { color: var(--accent-wine-deep); }
-.trust-col--dark  .trust-col-title { color: var(--accent-cream); }
+.trust-col--light .trust-col-title { color: var(--accent-cream); }
+.trust-col--dark  .trust-col-title { color: var(--accent-wine-deep); }
 
 /* Список */
 .trust-list {
@@ -481,45 +520,68 @@ body.menu-open {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(16px, 2vw, 22px);
+  gap: clamp(14px, 1.8vw, 20px);
 }
 
 /* Один пункт */
 .trust-item {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: clamp(12px, 1.4vw, 16px);
 }
 
 /* Іконка-коло */
 .trust-icon {
   flex-shrink: 0;
-  width: clamp(42px, 3.6vw, 52px);
-  height: clamp(42px, 3.6vw, 52px);
+  width: clamp(48px, 4vw, 60px);
+  height: clamp(48px, 4vw, 60px);
   border-radius: 50%;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(16px, 1.4vw, 20px);
-  font-weight: 700;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.trust-icon--risk {
-  background: var(--accent-wine-deep);
-  color: var(--accent-cream);
-  box-shadow: 0 4px 14px rgba(58, 20, 34, 0.45);
+
+.trust-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
-.trust-icon--good {
-  background: var(--accent-gold);
-  color: #1a0a0e;
-  box-shadow: 0 4px 14px rgba(218, 165, 32, 0.45);
+
+/* Фони для іконок через CSS — надійно грузяться як background-image */
+.trust-header-icon {
+  flex-shrink: 0;
+  width: clamp(52px, 4.5vw, 68px);
+  height: clamp(52px, 4.5vw, 68px);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+.trust-header-icon img { display: none; }
+
+.ti-hdr-risk { background-image: url('../assets/icons/header-risk.png'); }
+.ti-hdr-good { background-image: url('../assets/icons/header-good.png'); }
+.ti-risk-1   { background-image: url('../assets/icons/risk-1.png'); }
+.ti-risk-2   { background-image: url('../assets/icons/risk-2.png'); }
+.ti-risk-3   { background-image: url('../assets/icons/risk-3.png'); }
+.ti-risk-4   { background-image: url('../assets/icons/risk-4.png'); }
+.ti-risk-5   { background-image: url('../assets/icons/risk-5.png'); }
+.ti-good-1   { background-image: url('../assets/icons/good-1.png'); }
+.ti-good-2   { background-image: url('../assets/icons/good-2.png'); }
+.ti-good-3   { background-image: url('../assets/icons/good-3.png'); }
+.ti-good-4   { background-image: url('../assets/icons/good-4.png'); }
+.ti-good-5   { background-image: url('../assets/icons/good-5.png'); }
 
 /* Текст пункту */
 .trust-text {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding-top: 4px;
+  padding-top: clamp(6px, 0.7vw, 10px);
 }
 .trust-text strong {
   font-family: var(--font-display);
@@ -533,24 +595,26 @@ body.menu-open {
   font-size: clamp(13px, 1.05vw, 15px);
   line-height: 1.55;
 }
-.trust-col--light .trust-text strong { color: var(--accent-wine-deep); }
-.trust-col--light .trust-text span   { color: #4a2a16; }
-.trust-col--dark  .trust-text strong { color: var(--accent-gold); }
-.trust-col--dark  .trust-text span   { color: rgba(244, 234, 220, 0.85); }
+.trust-col--light .trust-text strong { color: var(--accent-gold); }
+.trust-col--light .trust-text span   { color: rgba(244, 234, 220, 0.85); }
+.trust-col--dark  .trust-text strong { color: #2a0c14; }
+.trust-col--dark  .trust-text span   { color: #3a1a0a; }
 
-/* Планшет (до 900px) */
+/* Планшет (до 900px) — центральна колонка вужче */
 @media (max-width: 900px) {
   .section-daynight {
     background:
       linear-gradient(rgba(16, 10, 13, 0.28), rgba(16, 10, 13, 0.28)),
       url('../assets/images/backgrounds/bg-nebesa-svet-temnota.jpg') 42% center / cover no-repeat;
   }
-  .trust-grid {
-    grid-template-columns: 1fr 1fr;
+  .trust-center-scales {
+    flex: 0 0 180px;
+    width: 180px;
+    min-width: 180px;
   }
 }
 
-/* Мобіль (до 640px) — колонки стають одна під одною */
+/* Мобіль (до 640px) — колонки стають одна під одною, центр ховаємо */
 @media (max-width: 640px) {
   .section-daynight {
     background:
@@ -558,11 +622,23 @@ body.menu-open {
       url('../assets/images/backgrounds/bg-nebesa-svet-temnota.jpg') 38% center / cover no-repeat;
   }
   .trust-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+  .trust-center-scales {
+    display: none;
   }
   .trust-col--light,
   .trust-col--dark {
     padding: 24px 20px;
+  }
+  /* На мобільному — заголовок і підзаголовок без градієнту, просто білий */
+  .section-daynight > .container > h2,
+  .section-daynight > .container > .lead {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: #f4eadc;
+    background-clip: unset;
+    color: #f4eadc;
   }
 }
 
@@ -1406,6 +1482,179 @@ body.menu-open {
     grid-template-columns: 1fr;
   }
 }
+
+/* =====================================================
+   BLOCK 6: ABOUT DMITRY — certificates + stats + qualities
+   ===================================================== */
+
+.section-dmitry {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(110, 40, 60, 0.26), transparent 50%),
+    radial-gradient(circle at 12% 86%, rgba(58, 20, 34, 0.22), transparent 44%),
+    #0d090c;
+  border-block: 1px solid rgba(255, 255, 255, 0.045);
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 1.4vw, 16px);
+  margin-top: clamp(28px, 3vw, 44px);
+  margin-bottom: clamp(36px, 4vw, 52px);
+}
+
+.cert-frame {
+  position: relative;
+  aspect-ratio: 1000 / 707;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(218, 165, 32, 0.32);
+  overflow: hidden;
+  background: linear-gradient(145deg, #1e1208 0%, #130c06 100%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.50);
+  transition: box-shadow 0.30s ease;
+}
+
+.cert-frame::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(218, 165, 32, 0.14);
+  border-radius: calc(var(--radius-md) - 4px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cert-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.95) saturate(0.88);
+  transition: filter 0.30s ease;
+}
+
+.cert-card:hover .cert-frame {
+  box-shadow: 0 12px 44px rgba(0, 0, 0, 0.60);
+}
+
+.cert-card:hover .cert-frame img {
+  filter: brightness(1.02) saturate(0.95);
+}
+
+@media (max-width: 700px) {
+  .cert-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.about-stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-top: clamp(32px, 4vw, 52px);
+  margin-bottom: clamp(36px, 4.5vw, 56px);
+  padding: clamp(22px, 2.8vw, 40px) clamp(24px, 3vw, 48px);
+  border: 1px solid rgba(218, 165, 32, 0.18);
+  border-radius: var(--radius-lg);
+  background: rgba(218, 165, 32, 0.04);
+}
+
+.about-stat {
+  flex: 1;
+  text-align: center;
+  padding: 0 clamp(16px, 2.5vw, 32px);
+}
+
+.about-stat + .about-stat {
+  border-left: 1px solid rgba(218, 165, 32, 0.20);
+}
+
+.about-stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(44px, 5.5vw, 76px);
+  font-weight: 500;
+  color: var(--accent-gold);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.about-stat-label {
+  display: block;
+  font-size: clamp(11px, 0.85vw, 13px);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  margin-top: 10px;
+}
+
+.about-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+}
+
+.about-bio {
+  font-size: clamp(15px, 1.2vw, 18px);
+  color: var(--text-primary);
+  line-height: 1.70;
+  margin: 0 0 clamp(20px, 2.5vw, 30px);
+}
+
+.about-qualities {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-qualities li {
+  position: relative;
+  padding: clamp(10px, 1.1vw, 14px) 0 clamp(10px, 1.1vw, 14px) clamp(24px, 2.5vw, 30px);
+  font-size: clamp(14px, 1.1vw, 16px);
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(244, 234, 220, 0.08);
+  line-height: 1.55;
+}
+
+.about-qualities li:first-child {
+  border-top: 1px solid rgba(244, 234, 220, 0.08);
+}
+
+.about-qualities li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: clamp(10px, 1.1vw, 14px);
+  color: var(--accent-gold);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+@media (max-width: 740px) {
+  .about-stats {
+    gap: 0;
+    padding: 18px 12px;
+  }
+  .about-stat {
+    padding: 0 clamp(10px, 3vw, 16px);
+  }
+  .about-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-stat-num {
+    font-size: clamp(34px, 9vw, 46px);
+  }
+  .about-stat-label {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+}
+
+/* ===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
   *,
