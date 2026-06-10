@@ -118,7 +118,7 @@ function initHeroVideo() {
         resetVideo();
       }
     },
-    { threshold: 0.55 }
+    { threshold: 0.15 }
   );
 
   observer.observe(hero);

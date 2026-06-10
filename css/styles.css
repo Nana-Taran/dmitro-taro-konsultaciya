@@ -410,9 +410,160 @@ body.menu-open {
 
 .section-wine {
   background:
-    radial-gradient(circle at 14% 0%, rgba(110, 40, 60, 0.38), transparent 58%),
-    radial-gradient(circle at 88% 8%, rgba(58, 20, 34, 0.35), transparent 42%),
+    radial-gradient(circle at 14% 0%, rgba(120, 44, 64, 0.55), transparent 58%),
+    radial-gradient(circle at 88% 8%, rgba(68, 24, 40, 0.46), transparent 42%),
     #100a0d;
+}
+
+/* Блок 5 — «День і ніч»: власне зображення вже має перехід світло→бордо */
+.section-daynight {
+  background:
+    linear-gradient(rgba(16, 10, 13, 0.22), rgba(16, 10, 13, 0.22)),
+    url('../assets/images/backgrounds/bg-nebesa-svet-temnota.jpg') center center / cover no-repeat;
+  padding-block: 38px !important;
+  border-block: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.section-daynight > .container > h2 {
+  letter-spacing: 0.04em;
+}
+
+.section-daynight > .container > .eyebrow {
+  color: var(--accent-gold);
+  font-size: 15px;
+  letter-spacing: 0.12em;
+}
+
+/* ── Блок 5: trust-grid (шахова розкладка колонок) ── */
+.trust-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 2vw, 24px);
+  margin-top: clamp(28px, 3vw, 44px);
+}
+
+/* Ліва колонка — КРЕМОВА (на тёмному фоні) */
+.trust-col--light {
+  background: #ede3d4;
+  border-radius: var(--radius-md);
+  padding: clamp(28px, 3vw, 44px) clamp(20px, 2.5vw, 36px);
+  border: 1px solid rgba(244, 234, 220, 0.50);
+  box-shadow: 0 12px 44px rgba(20, 4, 10, 0.40);
+}
+
+/* Права колонка — БОРДОВА (на світлому фоні) */
+.trust-col--dark {
+  background: #34101e;
+  border-radius: var(--radius-md);
+  padding: clamp(28px, 3vw, 44px) clamp(20px, 2.5vw, 36px);
+  border: 1px solid rgba(110, 40, 60, 0.50);
+  border-top: 1px solid rgba(244, 234, 220, 0.20);
+  box-shadow: 0 12px 44px rgba(20, 4, 10, 0.55);
+}
+
+/* Заголовок колонки */
+.trust-col-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.2vw, 34px);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin: 0 0 clamp(20px, 2.5vw, 32px);
+  text-align: center;
+  line-height: 1.1;
+}
+.trust-col--light .trust-col-title { color: var(--accent-wine-deep); }
+.trust-col--dark  .trust-col-title { color: var(--accent-cream); }
+
+/* Список */
+.trust-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vw, 22px);
+}
+
+/* Один пункт */
+.trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+/* Іконка-коло */
+.trust-icon {
+  flex-shrink: 0;
+  width: clamp(42px, 3.6vw, 52px);
+  height: clamp(42px, 3.6vw, 52px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 700;
+}
+.trust-icon--risk {
+  background: var(--accent-wine-deep);
+  color: var(--accent-cream);
+  box-shadow: 0 4px 14px rgba(58, 20, 34, 0.45);
+}
+.trust-icon--good {
+  background: var(--accent-gold);
+  color: #1a0a0e;
+  box-shadow: 0 4px 14px rgba(218, 165, 32, 0.45);
+}
+
+/* Текст пункту */
+.trust-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 4px;
+}
+.trust-text strong {
+  font-family: var(--font-display);
+  font-size: clamp(15px, 1.35vw, 19px);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+.trust-text span {
+  font-size: clamp(13px, 1.05vw, 15px);
+  line-height: 1.55;
+}
+.trust-col--light .trust-text strong { color: var(--accent-wine-deep); }
+.trust-col--light .trust-text span   { color: #4a2a16; }
+.trust-col--dark  .trust-text strong { color: var(--accent-gold); }
+.trust-col--dark  .trust-text span   { color: rgba(244, 234, 220, 0.85); }
+
+/* Планшет (до 900px) */
+@media (max-width: 900px) {
+  .section-daynight {
+    background:
+      linear-gradient(rgba(16, 10, 13, 0.28), rgba(16, 10, 13, 0.28)),
+      url('../assets/images/backgrounds/bg-nebesa-svet-temnota.jpg') 42% center / cover no-repeat;
+  }
+  .trust-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Мобіль (до 640px) — колонки стають одна під одною */
+@media (max-width: 640px) {
+  .section-daynight {
+    background:
+      linear-gradient(rgba(16, 10, 13, 0.32), rgba(16, 10, 13, 0.32)),
+      url('../assets/images/backgrounds/bg-nebesa-svet-temnota.jpg') 38% center / cover no-repeat;
+  }
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+  .trust-col--light,
+  .trust-col--dark {
+    padding: 24px 20px;
+  }
 }
 
 .section h2 {
@@ -585,6 +736,12 @@ body.menu-open {
   object-position: center;
 }
 
+@media (max-width: 900px) {
+  .process-bg img {
+    object-position: center top;
+  }
+}
+
 .process-section .container {
   position: relative;
   z-index: 1;
@@ -675,11 +832,20 @@ body.menu-open {
 }
 
 @media (max-width: 800px) {
-  .process-cards { grid-template-columns: repeat(2, 1fr); }
+  .process-cards {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 0;
+  }
+  .process-title { padding-bottom: 16px; }
+  .process-section { min-height: auto; }
 }
 
 @media (max-width: 480px) {
-  .process-cards { grid-template-columns: 1fr; }
+  .process-cards {
+    grid-template-columns: 1fr;
+    margin-top: 0;
+  }
+  .process-title { padding-bottom: 12px; }
 }
 
 /* ── Situations section ── */
@@ -812,6 +978,142 @@ body.menu-open {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   margin-top: 34px;
+}
+
+/* ── Block 4 — fixed 38px padding (like blocks 2-3) ── */
+.section-wine {
+  padding-block: 38px !important;
+}
+
+/* ── Block 4 headings — centered, same style as blocks 2-3 ── */
+.section-wine > .container > .eyebrow {
+  color: var(--accent-gold);
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  text-align: center;
+  width: 100%;
+}
+
+.section-wine > .container > h2 {
+  text-align: center;
+  width: 100%;
+  letter-spacing: 0.04em;
+}
+
+.section-wine > .container > .center-actions {
+  text-align: center;
+  margin-top: clamp(28px, 3vw, 44px);
+}
+
+.section-wine > .container > .center-actions .btn {
+  border-radius: 999px;
+  padding-left: clamp(28px, 3vw, 48px);
+  padding-right: clamp(28px, 3vw, 48px);
+}
+
+/* ── Service cards — block 4 ── */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(10px, 1.2vw, 16px);
+  margin-top: clamp(24px, 3vw, 40px);
+}
+
+.service-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 14px 44px rgba(20, 4, 10, 0.52), 0 2px 8px rgba(0,0,0,0.22);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 26px 64px rgba(20, 4, 10, 0.62), 0 4px 14px rgba(0,0,0,0.28);
+}
+
+.service-card-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(160deg, #6e283c 0%, #3a1422 100%);
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.service-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.86) saturate(0.75);
+  transition: filter 0.35s ease;
+}
+
+.service-card:hover .service-card-img img {
+  filter: brightness(0.92) saturate(0.85);
+}
+
+.service-card-img::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 58%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(217, 182, 154, 0.50) 100%);
+  pointer-events: none;
+}
+
+.service-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(14px, 1.5vw, 20px) clamp(12px, 1.3vw, 18px);
+  background: rgba(217, 182, 154, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(217, 182, 154, 0.60);
+  border-top: none;
+}
+
+.service-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 1.9vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--accent-wine-deep);
+  margin: 0 0 8px;
+  line-height: 1.15;
+}
+
+.service-card p {
+  font-size: clamp(13px, 1.05vw, 15px);
+  color: #4a2a16;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+.btn-card {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: clamp(12px, 1.4vw, 16px);
+  font-size: clamp(12px, 0.88vw, 14px) !important;
+  padding: 10px 12px !important;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1100px) {
+  .service-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 .card {

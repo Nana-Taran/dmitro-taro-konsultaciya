@@ -69,8 +69,9 @@
               class="hero-video hero-video-desktop"
               poster="assets/images/hero/dmytro-hero-wide-test.png"
               muted
+              autoplay
               playsinline
-              preload="metadata"
+              preload="auto"
               aria-hidden="true"
             >
               <source src="assets/video/hero/dmytro-hero-main-desktop.mp4" type="video/mp4">
@@ -79,8 +80,9 @@
               class="hero-video hero-video-mobile"
               poster="assets/images/hero/dmytro-hero-mobile-test.png"
               muted
+              autoplay
               playsinline
-              preload="metadata"
+              preload="auto"
               aria-hidden="true"
             >
               <source src="assets/video/hero/dmytro-hero-main-mobile.mp4" type="video/mp4">
@@ -133,7 +135,10 @@
       </section>
       <section class="process-section">
         <div class="process-bg" aria-hidden="true">
-          <img src="assets/images/backgrounds/bg-process-light.jpg" alt="">
+          <picture>
+            <source media="(max-width: 900px)" srcset="assets/images/backgrounds/bg-process-mobile.jpg">
+            <img src="assets/images/backgrounds/bg-process-light.jpg" alt="">
+          </picture>
         </div>
         <div class="container">
           <p class="eyebrow process-eyebrow" data-ua="Перший принцип" data-ru="Первый принцип">Перший принцип</p>
@@ -168,69 +173,164 @@
 
           <p class="eyebrow" data-ua="Послуги" data-ru="Услуги">Послуги</p>
           <h2 data-ua="Основні напрями роботи" data-ru="Основные направления работы">Основні напрями роботи</h2>
-          <div class="card-grid">
-            <article class="card">
-              <h3 data-ua="Діагностика стосунків" data-ru="Диагностика отношений">Діагностика стосунків</h3>
-              <p data-ua="Розбір ситуації: що відбувається в парі, чому людина віддалилася, які причини можуть впливати." data-ru="Разбор ситуации: что происходит в паре, почему человек отдалился, какие причины могут влиять.">Розбір ситуації: що відбувається в парі, чому людина віддалилася, які причини можуть впливати.</p>
-              <a href="diagnostika-otnosheniy/index.html" data-ua="Детальніше" data-ru="Подробнее">Детальніше</a>
+          <div class="service-grid">
+            <article class="service-card">
+              <div class="service-card-img">
+                <img src="assets/images/services/diagnostika-otnosheniy-taro.jpg" alt="Диагностика отношений — таролог Дмитрий">
+              </div>
+              <div class="service-card-body">
+                <h3 data-ua="Діагностика стосунків" data-ru="Диагностика отношений">Діагностика стосунків</h3>
+                <p data-ua="Розбір ситуації: що відбувається в парі, чому людина віддалилася, які причини можуть впливати." data-ru="Разбор ситуации: что происходит в паре, почему человек отдалился, какие причины могут влиять.">Розбір ситуації: що відбувається в парі, чому людина віддалилася, які причини можуть впливати.</p>
+                <a class="btn btn-primary btn-card" href="diagnostika-otnosheniy/index.html" data-ua="Детальніше" data-ru="Подробнее">Детальніше</a>
+              </div>
             </article>
-            <article class="card">
-              <h3 data-ua="Таро на стосунки" data-ru="Таро на отношения">Таро на стосунки</h3>
-              <p data-ua="Розклад на почуття, наміри, причини конфлікту й можливі напрями розвитку ситуації." data-ru="Расклад на чувства, намерения, причины конфликта и возможные направления развития ситуации.">Розклад на почуття, наміри, причини конфлікту й можливі напрями розвитку ситуації.</p>
-              <a href="taro-na-otnosheniya/index.html" data-ua="Детальніше" data-ru="Подробнее">Детальніше</a>
+            <article class="service-card">
+              <div class="service-card-img">
+                <img src="assets/images/services/taro-rasklad-na-otnosheniya.jpg" alt="Таро расклад на отношения — таролог Дмитрий">
+              </div>
+              <div class="service-card-body">
+                <h3 data-ua="Таро на стосунки" data-ru="Таро на отношения">Таро на стосунки</h3>
+                <p data-ua="Розклад на почуття, наміри, причини конфлікту й можливі напрями розвитку ситуації." data-ru="Расклад на чувства, намерения, причины конфликта и возможные направления развития ситуации.">Розклад на почуття, наміри, причини конфлікту й можливі напрями розвитку ситуації.</p>
+                <a class="btn btn-primary btn-card" href="taro-na-otnosheniya/index.html" data-ua="Детальніше" data-ru="Подробнее">Детальніше</a>
+              </div>
             </article>
-            <article class="card">
-              <h3 data-ua="Допомога після сварки" data-ru="Помощь после ссоры">Допомога після сварки</h3>
-              <p data-ua="Якщо немає спілкування, людина замовкла або пауза затягується, спочатку важливо зрозуміти причини." data-ru="Если нет общения, человек замолчал или пауза затягивается, сначала важно понять причины.">Якщо немає спілкування, людина замовкла або пауза затягується, спочатку важливо зрозуміти причини.</p>
-              <a href="posle-ssory/index.html" data-ua="Детальніше" data-ru="Подробнее">Детальніше</a>
+            <article class="service-card">
+              <div class="service-card-img">
+                <img src="assets/images/services/pomoshch-posle-ssory-partnera.jpg" alt="Помощь после ссоры с партнером — таролог Дмитрий">
+              </div>
+              <div class="service-card-body">
+                <h3 data-ua="Після сварки" data-ru="После ссоры">Після сварки</h3>
+                <p data-ua="Якщо немає спілкування, людина замовкла або пауза затягується — спочатку важливо зрозуміти причини." data-ru="Если нет общения, человек замолчал или пауза затягивается — сначала важно понять причины.">Якщо немає спілкування, людина замовкла або пауза затягується — спочатку важливо зрозуміти причини.</p>
+                <a class="btn btn-primary btn-card" href="posle-ssory/index.html" data-ua="Детальніше" data-ru="Подробнее">Детальніше</a>
+              </div>
             </article>
-            <article class="card">
-              <h3 data-ua="Індивідуальна любовна робота" data-ru="Индивидуальная любовная работа">Індивідуальна любовна робота</h3>
-              <p data-ua="Для складних ситуацій, де звичайна розмова і стандартний підхід не допомагають. Після діагностики." data-ru="Для сложных ситуаций, где обычный разговор и стандартный подход не помогают. После диагностики.">Для складних ситуацій, де звичайна розмова і стандартний підхід не допомагають. Після діагностики.</p>
-              <a href="lyubovnaya-rabota/index.html" data-ua="Почати з діагностики" data-ru="Начать с диагностики">Почати з діагностики</a>
+            <article class="service-card">
+              <div class="service-card-img">
+                <img src="assets/images/services/lyubovnaya-rabota-ezoteriya.jpg" alt="Любовная работа эзотерика — таролог Дмитрий">
+              </div>
+              <div class="service-card-body">
+                <h3 data-ua="Любовна робота" data-ru="Любовная работа">Любовна робота</h3>
+                <p data-ua="Для складних ситуацій, де звичайна розмова не допомагає. Після первинної діагностики." data-ru="Для сложных ситуаций, где обычный разговор не помогает. После первичной диагностики.">Для складних ситуацій, де звичайна розмова не допомагає. Після первинної діагностики.</p>
+                <a class="btn btn-primary btn-card" href="lyubovnaya-rabota/index.html" data-ua="Детальніше" data-ru="Подробнее">Детальніше</a>
+              </div>
             </article>
-            <article class="card">
-              <h3 data-ua="Захист і очищення" data-ru="Защита и очищение">Захист і очищення</h3>
-              <p data-ua="Якщо є відчуття негативного впливу або повторюваних конфліктів, спочатку потрібна діагностика." data-ru="Если есть ощущение негативного влияния или повторяющихся конфликтов, сначала нужна диагностика.">Якщо є відчуття негативного впливу або повторюваних конфліктів, спочатку потрібна діагностика.</p>
-              <a href="zaschita-ochischenie/index.html" data-ua="Дізнатися більше" data-ru="Узнать подробнее">Дізнатися більше</a>
+            <article class="service-card">
+              <div class="service-card-img">
+                <img src="assets/images/services/zaschita-i-ochischenie-negativnogo-vliyaniya.jpg" alt="Защита и очищение от негативного влияния — таролог Дмитрий">
+              </div>
+              <div class="service-card-body">
+                <h3 data-ua="Захист і очищення" data-ru="Защита и очищение">Захист і очищення</h3>
+                <p data-ua="Якщо є відчуття негативного впливу або повторюваних конфліктів — спочатку потрібна діагностика." data-ru="Если есть ощущение негативного влияния или повторяющихся конфликтов — сначала нужна диагностика.">Якщо є відчуття негативного впливу або повторюваних конфліктів — спочатку потрібна діагностика.</p>
+                <a class="btn btn-primary btn-card" href="zaschita-ochischenie/index.html" data-ua="Детальніше" data-ru="Подробнее">Детальніше</a>
+              </div>
             </article>
-            <article class="card">
-              <h3 data-ua="Вартість" data-ru="Стоимость">Вартість</h3>
-              <p data-ua="Умови й ціни потрібно підтвердити у Дмитра. Сторінка підготовлена як блок довіри." data-ru="Условия и цены нужно подтвердить у Дмитрия. Страница подготовлена как блок доверия.">Умови й ціни потрібно підтвердити у Дмитра. Сторінка підготовлена як блок довіри.</p>
-              <a href="stoimost/index.html" data-ua="Подивитися" data-ru="Посмотреть">Подивитися</a>
+            <article class="service-card">
+              <div class="service-card-img">
+                <img src="assets/images/services/online-konsultaciya-tarologa..jpg" alt="Онлайн консультация таролога Дмитрия">
+              </div>
+              <div class="service-card-body">
+                <h3 data-ua="Онлайн-консультація" data-ru="Онлайн-консультация">Онлайн-консультація</h3>
+                <p data-ua="Індивідуальна робота через месенджер або відеозв'язок — зручно з будь-якої країни." data-ru="Индивидуальная работа через мессенджер или видеосвязь — удобно из любой страны.">Індивідуальна робота через месенджер або відеозв'язок — зручно з будь-якої країни.</p>
+                <a class="btn btn-primary btn-card" href="online-konsultatsiia/index.html" data-ua="Детальніше" data-ru="Подробнее">Детальніше</a>
+              </div>
             </article>
           </div>
           <p class="center-actions"><a class="btn btn-secondary" href="posluhy/index.html" data-ua="Дивитися всі послуги" data-ru="Смотреть все услуги">Дивитися всі послуги</a></p>
 
         </div>
       </section>
-      <section class="section section-muted">
+      <section class="section section-daynight">
         <div class="container">
 
           <p class="eyebrow" data-ua="Довіра" data-ru="Доверие">Довіра</p>
           <h2 data-ua="Як не помилитися при виборі спеціаліста" data-ru="Как не ошибиться при выборе специалиста">Як не помилитися при виборі спеціаліста</h2>
           <p class="lead" data-ua="У цій сфері багато людей, які продають страх і гучні обіцянки. Перед зверненням важливо дивитися не тільки на красиві слова, а й на підхід." data-ru="В этой сфере много людей, которые продают страх и громкие обещания. Перед обращением важно смотреть не только на красивые слова, но и на подход.">У цій сфері багато людей, які продають страх і гучні обіцянки. Перед зверненням важливо дивитися не тільки на красиві слова, а й на підхід.</p>
-          <div class="split-grid">
-            <div>
-              <h3 data-ua="Ознаки ризику" data-ru="Признаки риска">Ознаки ризику</h3>
-              <ul class="check-list">
-            <li data-ua="Обіцяє 100% результат." data-ru="Обещает 100% результат.">Обіцяє 100% результат.</li>
-            <li data-ua="Називає точний строк на кшталт “за 3 дні”." data-ru="Называет точный срок вроде “за 3 дня”.">Називає точний строк на кшталт “за 3 дні”.</li>
-            <li data-ua="Лякає порчею, прокляттям або терміновістю." data-ru="Пугает порчей, проклятием или срочностью.">Лякає порчею, прокляттям або терміновістю.</li>
-            <li data-ua="Вимагає велику оплату одразу, без діагностики." data-ru="Требует большую оплату сразу, без диагностики.">Вимагає велику оплату одразу, без діагностики.</li>
-            <li data-ua="Не пояснює, що саме буде робити." data-ru="Не объясняет, что именно будет делать.">Не пояснює, що саме буде робити.</li>
-          </ul>
+          <div class=”trust-grid”>
+
+            <!-- Ліва колонка — ризики (кремова картка на тёмному фоні) -->
+            <div class=”trust-col trust-col--light”>
+              <h3 class=”trust-col-title” data-ua=”Ознаки ризику” data-ru=”Признаки риска”>Ознаки ризику</h3>
+              <ul class=”trust-list”>
+                <li class=”trust-item”>
+                  <div class=”trust-icon trust-icon--risk”>✕</div>
+                  <div class=”trust-text”>
+                    <strong data-ua=”100% РЕЗУЛЬТАТ” data-ru=”100% РЕЗУЛЬТАТ”>100% РЕЗУЛЬТАТ</strong>
+                    <span data-ua=”Серйозний спеціаліст так не говорить. Це маніпуляція очікуваннями.” data-ru=”Серьёзный специалист так не говорит. Это манипуляция ожиданиями.”>Серйозний спеціаліст так не говорить. Це маніпуляція очікуваннями.</span>
+                  </div>
+                </li>
+                <li class=”trust-item”>
+                  <div class=”trust-icon trust-icon--risk”>✕</div>
+                  <div class=”trust-text”>
+                    <strong data-ua=”ТОЧНИЙ СТРОК” data-ru=”ТОЧНЫЙ СРОК”>ТОЧНИЙ СТРОК</strong>
+                    <span data-ua='”За 3 дні” — це тиск, а не реальна допомога.' data-ru='”За 3 дня” — это давление, а не реальная помощь.'”За 3 дні” — це тиск, а не реальна допомога.</span>
+                  </div>
+                </li>
+                <li class=”trust-item”>
+                  <div class=”trust-icon trust-icon--risk”>✕</div>
+                  <div class=”trust-text”>
+                    <strong data-ua=”ЗАЛЯКУВАННЯ” data-ru=”ЗАПУГИВАНИЕ”>ЗАЛЯКУВАННЯ</strong>
+                    <span data-ua=”Порча, прокляття, терміновість — інструменти маніпулятора.” data-ru=”Порча, проклятие, срочность — инструменты манипулятора.”>Порча, прокляття, терміновість — інструменти маніпулятора.</span>
+                  </div>
+                </li>
+                <li class=”trust-item”>
+                  <div class=”trust-icon trust-icon--risk”>✕</div>
+                  <div class=”trust-text”>
+                    <strong data-ua=”ОПЛАТА НАПЕРЕД” data-ru=”ОПЛАТА ВПЕРЁД”>ОПЛАТА НАПЕРЕД</strong>
+                    <span data-ua=”Велика сума до будь-якої діагностики — тривожний знак.” data-ru=”Большая сумма до какой-либо диагностики — тревожный знак.”>Велика сума до будь-якої діагностики — тривожний знак.</span>
+                  </div>
+                </li>
+                <li class=”trust-item”>
+                  <div class=”trust-icon trust-icon--risk”>✕</div>
+                  <div class=”trust-text”>
+                    <strong data-ua=”СЕКРЕТНІСТЬ” data-ru=”СЕКРЕТНОСТЬ”>СЕКРЕТНІСТЬ</strong>
+                    <span data-ua=”Не пояснює що і чому — значить, щось приховує.” data-ru=”Не объясняет что и почему — значит, что-то скрывает.”>Не пояснює що і чому — значить, щось приховує.</span>
+                  </div>
+                </li>
+              </ul>
             </div>
-            <div>
-              <h3 data-ua="Як має працювати Дмитро" data-ru="Как должен работать Дмитрий">Як має працювати Дмитро</h3>
-              <ul class="check-list">
-            <li data-ua="Спочатку діагностика, потім пропозиція." data-ru="Сначала диагностика, потом предложение.">Спочатку діагностика, потім пропозиція.</li>
-            <li data-ua="Без гарантій на поведінку іншої людини." data-ru="Без гарантий на поведение другого человека.">Без гарантій на поведінку іншої людини.</li>
-            <li data-ua="Без тиску й залякування." data-ru="Без давления и запугивания.">Без тиску й залякування.</li>
-            <li data-ua="Конфіденційно." data-ru="Конфиденциально.">Конфіденційно.</li>
-            <li data-ua="Якщо робота недоречна, сказати про це до початку." data-ru="Если работа неуместна, сказать об этом до начала.">Якщо робота недоречна, сказати про це до початку.</li>
-          </ul>
+
+            <!-- Права колонка — Дмитро (бордова картка на світлому фоні) -->
+            <div class=”trust-col trust-col--dark”>
+              <h3 class=”trust-col-title” data-ua=”Як працює Дмитро” data-ru=”Как работает Дмитрий”>Як працює Дмитро</h3>
+              <ul class=”trust-list”>
+                <li class=”trust-item”>
+                  <div class=”trust-icon trust-icon--good”>✦</div>
+                  <div class=”trust-text”>
+                    <strong data-ua=”ДІАГНОСТИКА” data-ru=”ДИАГНОСТИКА”>ДІАГНОСТИКА</strong>
+                    <span data-ua=”Спочатку розуміє ситуацію — потім пропонує шлях.” data-ru=”Сначала понимает ситуацию — потом предлагает путь.”>Спочатку розуміє ситуацію — потім пропонує шлях.</span>
+                  </div>
+                </li>
+                <li class=”trust-item”>
+                  <div class=”trust-icon trust-icon--good”>✦</div>
+                  <div class=”trust-text”>
+                    <strong data-ua=”ЧЕСНІ МЕЖІ” data-ru=”ЧЕСТНЫЕ ГРАНИЦЫ”>ЧЕСНІ МЕЖІ</strong>
+                    <span data-ua=”Без обіцянок щодо поведінки іншої людини.” data-ru=”Без обещаний насчёт поведения другого человека.”>Без обіцянок щодо поведінки іншої людини.</span>
+                  </div>
+                </li>
+                <li class=”trust-item”>
+                  <div class=”trust-icon trust-icon--good”>✦</div>
+                  <div class=”trust-text”>
+                    <strong data-ua=”БЕЗ ТИСКУ” data-ru=”БЕЗ ДАВЛЕНИЯ”>БЕЗ ТИСКУ</strong>
+                    <span data-ua=”Жодного залякування, маніпуляцій або нав'язування.” data-ru=”Никакого запугивания, манипуляций или навязывания.”>Жодного залякування, маніпуляцій або нав'язування.</span>
+                  </div>
+                </li>
+                <li class=”trust-item”>
+                  <div class=”trust-icon trust-icon--good”>✦</div>
+                  <div class=”trust-text”>
+                    <strong data-ua=”КОНФІДЕНЦІЙНО” data-ru=”КОНФИДЕНЦИАЛЬНО”>КОНФІДЕНЦІЙНО</strong>
+                    <span data-ua=”Ваша ситуація залишається між вами.” data-ru=”Ваша ситуация остаётся между вами.”>Ваша ситуація залишається між вами.</span>
+                  </div>
+                </li>
+                <li class=”trust-item”>
+                  <div class=”trust-icon trust-icon--good”>✦</div>
+                  <div class=”trust-text”>
+                    <strong data-ua=”ВІДКРИТІСТЬ” data-ru=”ОТКРЫТОСТЬ”>ВІДКРИТІСТЬ</strong>
+                    <span data-ua=”Якщо робота недоречна — скаже до початку, а не після.” data-ru=”Если работа неуместна — скажет до начала, а не после.”>Якщо робота недоречна — скаже до початку, а не після.</span>
+                  </div>
+                </li>
+              </ul>
             </div>
+
           </div>
 
         </div>
