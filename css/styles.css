@@ -373,6 +373,12 @@ body.menu-open {
   user-select: none;
 }
 
+.hero-online-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
 .hero-online-dot {
   display: inline-block;
   width: 11px;
