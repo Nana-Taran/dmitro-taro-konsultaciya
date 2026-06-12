@@ -755,6 +755,15 @@ body.menu-open {
 }
 
 .faq-accordion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 40px;
+  align-items: start;
+}
+
+.faq-col {
+  display: flex;
+  flex-direction: column;
   border-top: 1px solid rgba(110, 40, 60, 0.2);
 }
 
@@ -779,6 +788,10 @@ body.menu-open {
   color: var(--text-primary, #f4eadc);
   text-align: left;
   transition: color 0.2s ease;
+}
+
+.faq-question:focus {
+  outline: none;
 }
 
 .faq-question:hover {
@@ -816,6 +829,13 @@ body.menu-open {
   line-height: 1.7;
   color: var(--text-secondary);
   opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .faq-accordion {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 }
 
 .center-actions {
