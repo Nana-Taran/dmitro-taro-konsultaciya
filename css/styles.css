@@ -312,11 +312,17 @@ body.menu-open {
   display: block;
 }
 
+.hero-cta-block {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: 18px;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 18px;
 }
 
 .hero .hero-actions .btn {
@@ -342,13 +348,17 @@ body.menu-open {
   align-items: center;
   gap: 6px;
   font-size: 13px;
+  font-weight: 500;
   line-height: 1.4;
   color: var(--accent-wine, #6e283c);
-  margin-top: 10px;
 }
 
 .hero-social-proof {
-  margin-top: 14px;
+  margin-top: 12px;
+}
+
+.hero-online {
+  margin-top: 6px;
 }
 
 .hero-stars {
