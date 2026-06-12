@@ -1757,6 +1757,237 @@ body.menu-open {
   transform: translateY(-5px);
 }
 
+/* =====================================================
+   BLOCK 7: REVIEWS — "Що говорять клієнти"
+   ===================================================== */
+
+.section-reviews {
+  background:
+    radial-gradient(circle at 14% 0%, rgba(120, 44, 64, 0.55), transparent 58%),
+    radial-gradient(circle at 88% 8%, rgba(68, 24, 40, 0.46), transparent 42%),
+    #100a0d;
+  padding-block: 38px !important;
+}
+
+.section-reviews > .container > .eyebrow {
+  color: var(--accent-gold);
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  text-align: center;
+  width: 100%;
+}
+
+.section-reviews > .container > h2 {
+  text-align: center;
+  width: 100%;
+  letter-spacing: 0.04em;
+}
+
+/* Grid: 6 columns desktop, responsive below */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(10px, 1.2vw, 16px);
+  margin-top: clamp(24px, 3vw, 40px);
+  position: relative;
+}
+
+/* Card — base state (hidden until IntersectionObserver fires) */
+.review-card {
+  border: 2px solid #5e2133;
+  box-shadow: 0 0 18px rgba(110, 40, 60, 0.35);
+  background-color: #331520;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.review-card.review-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Expanded card — scale up, come to front */
+.review-card.expanded {
+  transform: scale(1.15) !important;
+  z-index: 10;
+  box-shadow: 0 0 48px rgba(110, 40, 60, 0.55) !important;
+  border-color: rgba(218, 165, 32, 0.6);
+  overflow: visible;
+}
+
+/* Siblings dim when one is expanded */
+.review-card.dimmed {
+  opacity: 0.55 !important;
+}
+
+/* Inner area — screenshot background */
+.review-card-inner {
+  position: relative;
+  background: rgba(110, 40, 60, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: calc(var(--radius-md) - 2px) calc(var(--radius-md) - 2px) 0 0;
+}
+
+/* Slides */
+.review-slides {
+  position: relative;
+  width: 100%;
+  flex: 1;
+}
+
+.review-slide {
+  display: none;
+  width: 100%;
+  height: auto;
+  min-height: 120px;
+  object-fit: cover;
+  object-position: top center;
+  filter: brightness(0.96);
+  transition: filter 0.3s ease;
+}
+
+.review-slide.active {
+  display: block;
+}
+
+.review-card.expanded .review-slide {
+  filter: brightness(1.02);
+}
+
+/* Navigation: dots + arrows — hidden until card is expanded */
+.review-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 8px 10px;
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease, max-height 0.25s ease;
+}
+
+.review-card.expanded .review-nav {
+  opacity: 1;
+  visibility: visible;
+  max-height: 48px;
+}
+
+.review-dots {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.review-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(244, 234, 220, 0.3);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.review-dot.active {
+  background: var(--accent-gold);
+  transform: scale(1.3);
+}
+
+.review-arrow {
+  background: rgba(110, 40, 60, 0.6);
+  border: 1px solid rgba(218, 165, 32, 0.35);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--accent-cream);
+  font-size: 9px;
+  line-height: 1;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.review-arrow:hover {
+  background: rgba(110, 40, 60, 0.95);
+  border-color: rgba(218, 165, 32, 0.6);
+}
+
+/* Footer: name · city flag */
+.review-footer {
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: rgba(244, 234, 220, 0.75);
+  border-top: 1px solid rgba(94, 33, 51, 0.5);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  background: rgba(30, 8, 16, 0.6);
+}
+
+.review-name {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--accent-cream);
+}
+
+.review-sep {
+  color: rgba(218, 165, 32, 0.55);
+  font-size: 11px;
+}
+
+.review-city {
+  color: rgba(244, 234, 220, 0.60);
+  font-size: 11px;
+}
+
+/* Tablet: 3 columns */
+@media (max-width: 1100px) {
+  .reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .review-card.expanded {
+    transform: scale(1.1) !important;
+  }
+}
+
+/* Mobile: 2 columns */
+@media (max-width: 640px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .review-card.expanded {
+    transform: scale(1.06) !important;
+  }
+  .review-footer {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  .review-name {
+    font-size: 12px;
+  }
+}
+
 .btn-dark {
   transition: transform 0.25s ease, background 0.25s ease;
   will-change: transform;
