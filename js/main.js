@@ -55,10 +55,13 @@ function initFab() {
   });
 
   // GTM push on messenger link click
-  wrap.querySelectorAll("a[data-gtm-click]").forEach((link) => {
+  wrap.querySelectorAll("a[data-gtm-event]").forEach((link) => {
     link.addEventListener("click", () => {
       if (window.dataLayer) {
-        window.dataLayer.push({ event: link.dataset.gtmClick });
+        window.dataLayer.push({
+          event: link.dataset.gtmEvent,
+          gtm_label: link.dataset.gtmLabel,
+        });
       }
     });
   });
