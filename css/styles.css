@@ -343,7 +343,7 @@ body.menu-open {
   gap: 6px;
   font-size: 13px;
   line-height: 1.4;
-  color: rgba(244, 234, 220, 0.58);
+  color: var(--accent-wine, #6e283c);
   margin-top: 10px;
 }
 
@@ -359,8 +359,8 @@ body.menu-open {
 
 .hero-online-dot {
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   background: #3ecf5a;
   flex-shrink: 0;
