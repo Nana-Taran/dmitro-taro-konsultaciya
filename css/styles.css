@@ -754,6 +754,10 @@ body.menu-open {
   flex-direction: column;
 }
 
+.faq-mini {
+  padding-top: clamp(76px, 8vw, 120px);
+}
+
 .faq-mini > .container > .eyebrow,
 .faq-mini > .container > h2,
 .faq-mini > .container > .lead {
@@ -1836,7 +1840,7 @@ body.menu-open {
     radial-gradient(circle at 14% 0%, rgba(120, 44, 64, 0.55), transparent 58%),
     radial-gradient(circle at 88% 8%, rgba(68, 24, 40, 0.46), transparent 42%),
     #100a0d;
-  padding-block: 38px !important;
+  padding-block: 38px 78px !important;
 }
 
 .section-reviews > .container > .eyebrow {
