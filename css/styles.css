@@ -367,6 +367,12 @@ body.menu-open {
   font-size: 12px;
 }
 
+.hero-stars-spacer {
+  color: transparent;
+  pointer-events: none;
+  user-select: none;
+}
+
 .hero-online-dot {
   display: inline-block;
   width: 11px;
