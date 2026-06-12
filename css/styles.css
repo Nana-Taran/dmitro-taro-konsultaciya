@@ -242,7 +242,7 @@ body.menu-open {
   position: absolute;
   z-index: 4;
   left: clamp(58px, 7.8vw, 128px);
-  bottom: 0;
+  bottom: clamp(18px, 1.4vw, 26px);
   max-width: min(850px, 62vw);
   padding: 0;
 }
@@ -270,7 +270,7 @@ body.menu-open {
 
 .hero .hero-kicker {
   position: absolute;
-  top: clamp(-24px, -1.7vw, -14px);
+  top: clamp(-30px, -2vw, -18px);
   left: clamp(135px, 12vw, 220px);
   color: var(--accent-wine-suit);
   font-size: clamp(16px, 1.35vw, 22px);
