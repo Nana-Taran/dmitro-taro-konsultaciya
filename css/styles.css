@@ -1312,26 +1312,108 @@ body.menu-open {
   gap: 8px;
 }
 
-.floating-cta {
+/* ── FAB (Floating Action Button) ── */
+.fab-wrap {
   position: fixed;
   right: 18px;
   bottom: 18px;
-  z-index: 40;
-  display: grid;
-  width: 56px;
-  height: 56px;
-  place-items: center;
-  border-radius: 999px;
-  color: var(--accent-cream);
-  background: linear-gradient(135deg, #7a3048, var(--accent-wine-suit) 62%, var(--accent-wine-deep));
-  box-shadow: 0 0 0 0 rgba(77, 23, 39, 0.36);
-  animation: pulse 2.4s infinite;
+  z-index: 200;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 10px;
 }
 
-@keyframes pulse {
-  70% {
-    box-shadow: 0 0 0 18px rgba(201, 168, 76, 0);
-  }
+.fab-main {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #7a3048, var(--accent-wine-suit, #8b3a52) 62%, var(--accent-wine-deep, #5c1e30));
+  box-shadow: 0 4px 18px rgba(77, 23, 39, 0.5);
+  animation: fab-pulse 2.4s infinite;
+  display: grid;
+  place-items: center;
+  color: var(--accent-cream, #f4eadc);
+  transition: transform 0.25s ease, background 0.25s ease;
+  flex-shrink: 0;
+}
+
+.fab-main:hover {
+  transform: scale(1.08);
+}
+
+.fab-main svg {
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), opacity 0.25s ease;
+}
+
+.fab-wrap.open .fab-main .fab-icon-chat { opacity: 0; transform: rotate(90deg) scale(0.6); }
+.fab-wrap.open .fab-main .fab-icon-close { opacity: 1; transform: rotate(0deg) scale(1); }
+.fab-main .fab-icon-close { position: absolute; opacity: 0; transform: rotate(-90deg) scale(0.6); }
+
+.fab-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row-reverse;
+  transform: scale(0) translateY(12px);
+  opacity: 0;
+  transition: transform 0.28s cubic-bezier(.4,0,.2,1), opacity 0.25s ease;
+  transform-origin: center bottom;
+  pointer-events: none;
+}
+
+.fab-item.visible {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fab-item a {
+  width: 50px;
+  height: 50px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.fab-item a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 18px rgba(0,0,0,0.36);
+}
+
+.fab-item.telegram a { background: #27a7e7; }
+.fab-item.whatsapp a { background: #25d366; }
+.fab-item.viber a { background: #7360f2; }
+
+.fab-label {
+  font-family: var(--font-ui, sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(20,10,15,0.72);
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+  pointer-events: none;
+}
+
+@keyframes fab-pulse {
+  0%, 100% { box-shadow: 0 4px 18px rgba(77,23,39,0.5), 0 0 0 0 rgba(218,165,32,0.35); }
+  60%       { box-shadow: 0 4px 18px rgba(77,23,39,0.5), 0 0 0 14px rgba(218,165,32,0); }
+}
+
+@media (max-width: 480px) {
+  .fab-wrap { right: 14px; bottom: 14px; }
+  .fab-main { width: 52px; height: 52px; }
+  .fab-item a { width: 46px; height: 46px; }
+  .fab-label { display: none; }
 }
 
 @media (max-width: 900px) {

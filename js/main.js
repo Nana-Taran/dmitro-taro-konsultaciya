@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroVideo();
   initReviewCards();
   initFaqAccordion();
+  initFab();
 
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".mobile-panel");
@@ -18,6 +19,50 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+function initFab() {
+  const wrap = document.getElementById("fab-wrap");
+  const toggle = document.getElementById("fab-toggle");
+  if (!wrap || !toggle) return;
+
+  const items = Array.from(wrap.querySelectorAll(".fab-item"));
+
+  function openFab() {
+    wrap.classList.add("open");
+    toggle.setAttribute("aria-expanded", "true");
+    items.forEach((item, i) => {
+      setTimeout(() => item.classList.add("visible"), i * 60);
+    });
+  }
+
+  function closeFab() {
+    wrap.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+    items.forEach((item) => item.classList.remove("visible"));
+  }
+
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    wrap.classList.contains("open") ? closeFab() : openFab();
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!wrap.contains(e.target)) closeFab();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeFab();
+  });
+
+  // GTM push on messenger link click
+  wrap.querySelectorAll("a[data-gtm-click]").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.dataLayer) {
+        window.dataLayer.push({ event: link.dataset.gtmClick });
+      }
+    });
+  });
+}
 
 function initFaqAccordion() {
   const accordion = document.getElementById("faq-accordion");
