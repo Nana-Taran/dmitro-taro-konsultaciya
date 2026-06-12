@@ -13,4 +13,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: SITE_URL/sitemap.xml
+Sitemap: https://dmitro.online/sitemap.xml
