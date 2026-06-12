@@ -754,6 +754,12 @@ body.menu-open {
   flex-direction: column;
 }
 
+.faq-mini > .container > .eyebrow,
+.faq-mini > .container > h2,
+.faq-mini > .container > .lead {
+  text-align: center;
+}
+
 .faq-accordion {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -764,11 +770,11 @@ body.menu-open {
 .faq-col {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid rgba(110, 40, 60, 0.2);
+  border-top: 1.5px solid rgba(200, 80, 115, 0.55);
 }
 
 .faq-item {
-  border-bottom: 1px solid rgba(110, 40, 60, 0.2);
+  border-bottom: 1.5px solid rgba(200, 80, 115, 0.55);
 }
 
 .faq-question {
@@ -795,12 +801,12 @@ body.menu-open {
 }
 
 .faq-question:hover {
-  color: var(--accent-wine, #6e283c);
+  color: var(--accent-gold);
 }
 
 .faq-arrow {
   flex-shrink: 0;
-  color: var(--accent-wine, #6e283c);
+  color: var(--accent-gold);
   transition: transform 0.3s ease;
 }
 
