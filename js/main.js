@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroSequence();
   initHeroVideo();
   initReviewCards();
+  initFaqAccordion();
 
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".mobile-panel");
@@ -17,6 +18,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+function initFaqAccordion() {
+  const accordion = document.getElementById("faq-accordion");
+  if (!accordion) return;
+
+  const items = Array.from(accordion.querySelectorAll(".faq-item"));
+
+  function openItem(item) {
+    items.forEach((el) => {
+      const isTarget = el === item;
+      el.classList.toggle("open", isTarget);
+      el.querySelector(".faq-question").setAttribute("aria-expanded", String(isTarget));
+    });
+  }
+
+  items.forEach((item) => {
+    item.querySelector(".faq-question").addEventListener("click", () => {
+      if (item.classList.contains("open")) {
+        item.classList.remove("open");
+        item.querySelector(".faq-question").setAttribute("aria-expanded", "false");
+      } else {
+        openItem(item);
+      }
+    });
+  });
+}
 
 function initReviewCards() {
   const grid = document.getElementById("reviews-grid");
