@@ -1,22 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>SITE_URL/</loc></url>
-  <url><loc>SITE_URL/diagnostika-otnosheniy/</loc></url>
-  <url><loc>SITE_URL/taro-na-otnosheniya/</loc></url>
-  <url><loc>SITE_URL/posle-ssory/</loc></url>
-  <url><loc>SITE_URL/lyubovnaya-rabota/</loc></url>
-  <url><loc>SITE_URL/zaschita-ochischenie/</loc></url>
-  <url><loc>SITE_URL/stoimost/</loc></url>
-  <url><loc>SITE_URL/o-dmitrii/</loc></url>
-  <url><loc>SITE_URL/faq/</loc></url>
-  <url><loc>SITE_URL/kontakty/</loc></url>
-  <url><loc>SITE_URL/privacy/</loc></url>
-  <url><loc>SITE_URL/posluhy/</loc></url>
-  <url><loc>SITE_URL/posluhy/lyubovna-magiya.html</loc></url>
-  <url><loc>SITE_URL/posluhy/pryvorot.html</loc></url>
-  <url><loc>SITE_URL/posluhy/vidvorot.html</loc></url>
-  <url><loc>SITE_URL/posluhy/znyattia-porchi.html</loc></url>
-  <url><loc>SITE_URL/posluhy/ochyshchennia.html</loc></url>
-  <url><loc>SITE_URL/posluhy/zakhyst.html</loc></url>
-  <url><loc>SITE_URL/posluhy/hroshova-magiya.html</loc></url>
+
+  <!-- Главная -->
+  <url><loc>https://dmitro.online/</loc><lastmod>2026-06-12</lastmod><priority>1.0</priority><changefreq>weekly</changefreq></url>
+
+  <!-- Основные лендинги -->
+  <url><loc>https://dmitro.online/diagnostika-otnosheniy/</loc><lastmod>2026-06-12</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/taro-na-otnosheniya/</loc><lastmod>2026-06-12</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/posle-ssory/</loc><lastmod>2026-06-12</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/lyubovnaya-rabota/</loc><lastmod>2026-06-12</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/zaschita-ochischenie/</loc><lastmod>2026-06-12</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+
+  <!-- Послуги -->
+  <url><loc>https://dmitro.online/posluhy/</loc><lastmod>2026-06-12</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/posluhy/lyubovna-magiya.html</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/posluhy/pryvorot.html</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/posluhy/vidvorot.html</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/posluhy/znyattia-porchi.html</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/posluhy/ochyshchennia.html</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/posluhy/zakhyst.html</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/posluhy/hroshova-magiya.html</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/posluhy/stosunky.html</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/posluhy/taro.html</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/posluhy/hroshi-rishennia.html</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
+
+  <!-- Про Дмитра, ціни, відгуки -->
+  <url><loc>https://dmitro.online/o-dmitrii/</loc><lastmod>2026-06-12</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/stoimost/</loc><lastmod>2026-06-12</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/vidhuky/</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/notatky/</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://dmitro.online/online-konsultatsiia/</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+
+  <!-- Гео-сторінки -->
+  <url><loc>https://dmitro.online/geo/ukrayintsi-v-polshchi.html</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/geo/ukrayintsi-v-nimechchyni.html</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/geo/ukrayintsi-v-chekhii.html</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/geo/ukrayintsi-v-italii.html</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/geo/ukrayintsi-v-kanadi.html</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/geo/ukrayintsi-v-ssha.html</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
+
+  <!-- FAQ, контакти -->
+  <url><loc>https://dmitro.online/faq/</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/kontakty/</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://dmitro.online/privacy/</loc><lastmod>2026-06-12</lastmod><priority>0.3</priority><changefreq>yearly</changefreq></url>
+
 </urlset>

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.DmitriiAnimations?.initAnimations();
   initHeroSequence();
   initHeroVideo();
+  initReviewCards();
 
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".mobile-panel");
@@ -16,6 +17,104 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+function initReviewCards() {
+  const grid = document.getElementById("reviews-grid");
+  if (!grid) return;
+
+  const cards = Array.from(grid.querySelectorAll(".review-card"));
+  const isMobile = () => window.innerWidth <= 900;
+
+  function goToSlide(card, index) {
+    const slides = Array.from(card.querySelectorAll(".review-slide"));
+    const dots = Array.from(card.querySelectorAll(".review-dot"));
+    const total = slides.length;
+    if (total <= 1) return;
+    const next = ((index % total) + total) % total;
+    card.dataset.current = String(next);
+    slides.forEach((s, i) => s.classList.toggle("active", i === next));
+    dots.forEach((d, i) => d.classList.toggle("active", i === next));
+  }
+
+  function expandCard(card) {
+    cards.forEach((c) => {
+      if (c === card) {
+        c.classList.add("expanded");
+        c.classList.remove("dimmed");
+      } else {
+        c.classList.remove("expanded");
+        c.classList.add("dimmed");
+      }
+    });
+  }
+
+  function collapseAll() {
+    cards.forEach((c) => c.classList.remove("expanded", "dimmed"));
+  }
+
+  cards.forEach((card) => {
+    const slides = card.querySelectorAll(".review-slide");
+    if (slides.length > 1) {
+      const prev = card.querySelector(".review-prev");
+      const next = card.querySelector(".review-next");
+      const dots = card.querySelectorAll(".review-dot");
+
+      prev?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        goToSlide(card, Number(card.dataset.current) - 1);
+      });
+      next?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        goToSlide(card, Number(card.dataset.current) + 1);
+      });
+      dots.forEach((dot, i) =>
+        dot.addEventListener("click", (e) => {
+          e.stopPropagation();
+          goToSlide(card, i);
+        })
+      );
+
+      // Swipe on mobile
+      let touchStartX = 0;
+      card.addEventListener("touchstart", (e) => {
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+      card.addEventListener("touchend", (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 38) goToSlide(card, Number(card.dataset.current) + (dx < 0 ? 1 : -1));
+      }, { passive: true });
+    }
+
+    // Desktop hover
+    card.addEventListener("mouseenter", () => { if (!isMobile()) expandCard(card); });
+    card.addEventListener("mouseleave", () => { if (!isMobile()) collapseAll(); });
+
+    // Mobile tap
+    card.addEventListener("click", () => {
+      if (!isMobile()) return;
+      if (card.classList.contains("expanded")) collapseAll();
+      else expandCard(card);
+    });
+  });
+
+  // Tap outside collapses on mobile
+  document.addEventListener("click", (e) => {
+    if (isMobile() && !e.target.closest(".review-card")) collapseAll();
+  });
+
+  // Entrance animation via IntersectionObserver
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry.isIntersecting) return;
+      cards.forEach((card, i) =>
+        setTimeout(() => card.classList.add("review-visible"), i * 80)
+      );
+      observer.disconnect();
+    },
+    { threshold: 0.12 }
+  );
+  observer.observe(grid);
+}
 
 function initHeroSequence() {
   const img = document.querySelector(".hero-sequence");
@@ -101,6 +200,10 @@ function initHeroVideo() {
     video.addEventListener("ended", () => {
       video.classList.remove("is-playing");
       video.classList.add("has-ended");
+    });
+    // Mobile fix: show video as soon as it starts playing via HTML autoplay attribute
+    video.addEventListener("playing", () => {
+      video.classList.add("is-playing");
     });
   });
 
