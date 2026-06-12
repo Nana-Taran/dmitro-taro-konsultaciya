@@ -347,8 +347,8 @@ body.menu-open {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 700;
   line-height: 1.4;
   color: var(--accent-wine, #6e283c);
 }
