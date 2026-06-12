@@ -760,6 +760,10 @@ body.menu-open {
   text-align: center;
 }
 
+.faq-mini > .container > h2 {
+  margin-bottom: clamp(32px, 4vw, 52px);
+}
+
 .faq-accordion {
   display: grid;
   grid-template-columns: 1fr 1fr;
