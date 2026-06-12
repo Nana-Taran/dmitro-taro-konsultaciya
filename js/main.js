@@ -102,6 +102,10 @@ function initHeroVideo() {
       video.classList.remove("is-playing");
       video.classList.add("has-ended");
     });
+    // Mobile fix: show video as soon as it starts playing via HTML autoplay attribute
+    video.addEventListener("playing", () => {
+      video.classList.add("is-playing");
+    });
   });
 
   hero.addEventListener("pointermove", replayOnHeroActivity, { passive: true });

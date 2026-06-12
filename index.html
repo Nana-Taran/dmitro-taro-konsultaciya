@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=20260610-mobile-v5">
+    <link rel="stylesheet" href="css/styles.css?v=20260611-block6-v6">
   <style>
   /* TRUST BLOCK 5 — FLEXBOX OVERRIDE (no clamp in layout) */
   .trust-grid {
@@ -494,6 +494,21 @@
           <p class="eyebrow" data-ua="Про Дмитра" data-ru="О Дмитрии">Про Дмитра</p>
           <h2 data-ua="Хто з вами працює" data-ru="Кто с вами работает">Хто з вами працює</h2>
 
+          <div class="about-stats">
+            <div class="about-stat">
+              <span class="about-stat-num" data-count="18+">18+</span>
+              <span class="about-stat-label" data-ua="років практики" data-ru="лет практики">років практики</span>
+            </div>
+            <div class="about-stat">
+              <span class="about-stat-num" data-count="1000+">1000+</span>
+              <span class="about-stat-label" data-ua="клієнтів" data-ru="клиентов">клієнтів</span>
+            </div>
+            <div class="about-stat">
+              <span class="about-stat-num" data-count="12">12</span>
+              <span class="about-stat-label" data-ua="країн" data-ru="стран">країн</span>
+            </div>
+          </div>
+
           <div class="cert-grid">
             <div class="cert-card">
               <div class="cert-frame">
@@ -517,40 +532,144 @@
             </div>
           </div>
 
-          <div class="about-stats">
-            <div class="about-stat">
-              <span class="about-stat-num">10+</span>
-              <span class="about-stat-label" data-ua="років практики" data-ru="лет практики">років практики</span>
-            </div>
-            <div class="about-stat">
-              <span class="about-stat-num">1000+</span>
-              <span class="about-stat-label" data-ua="клієнтів" data-ru="клиентов">клієнтів</span>
-            </div>
-            <div class="about-stat">
-              <span class="about-stat-num">12</span>
-              <span class="about-stat-label" data-ua="країн" data-ru="стран">країн</span>
-            </div>
-          </div>
+          <!-- СЕРПАНТИН v4: путь из кнопки в кнопку -->
+          <div class="serpentine-wrapper" style="position:relative; width:100%; overflow:visible; margin-top:40px;">
 
-          <div class="about-body">
-            <div class="about-bio-col">
-              <p class="about-bio"
-                 data-ua="Мене звати Дмитро. Я допомагаю людям, які опинилися у складній особистій ситуації й хочуть зрозуміти, що відбувається у стосунках. Основна тема — пари: сварки, охолодження, мовчання, болісні ситуації та бажання відновити контакт."
-                 data-ru="Меня зовут Дмитрий. Я помогаю людям, которые оказались в сложной личной ситуации и хотят понять, что происходит в отношениях. Основная тема — пары: ссоры, охлаждение, молчание, болезненные ситуации и желание восстановить контакт.">
-                Мене звати Дмитро. Я допомагаю людям, які опинилися у складній особистій ситуації й хочуть зрозуміти, що відбувається у стосунках. Основна тема — пари: сварки, охолодження, мовчання, болісні ситуації та бажання відновити контакт.
-              </p>
-              <a class="btn btn-secondary" href="o-dmitrii/index.html" data-ua="Детальніше про Дмитра" data-ru="Подробнее о Дмитрии">Детальніше про Дмитра</a>
+            <!-- ВЕРХНЯЯ КНОПКА — перекрывает верх SVG на 30px -->
+            <div style="display:flex; justify-content:center; position:relative; z-index:10; margin-bottom:-30px;">
+              <button style="background:#5e2133; color:#fae7d2; border:none; border-radius:50px; padding:14px 44px; font-size:17px; font-weight:600; font-family:'Lato',Arial,sans-serif; cursor:default;">Вы обратились к Дмитрию</button>
             </div>
-            <div class="about-qual-col">
-              <ul class="about-qualities">
-                <li data-ua="Працює під своїм ім'ям і показує обличчя" data-ru="Работает под своим именем и показывает лицо">Працює під своїм ім'ям і показує обличчя</li>
-                <li data-ua="Спочатку діагностика — потім будь-яка пропозиція" data-ru="Сначала диагностика — потом любое предложение">Спочатку діагностика — потім будь-яка пропозиція</li>
-                <li data-ua="Без гарантій і тиску на клієнта" data-ru="Без гарантий и давления на клиента">Без гарантій і тиску на клієнта</li>
-                <li data-ua="Пояснює зрозумілою мовою, без страшних слів" data-ru="Объясняет понятным языком, без пугающих слов">Пояснює зрозумілою мовою, без страшних слів</li>
-                <li data-ua="Якщо робота недоречна — скаже до початку" data-ru="Если работа неуместна — скажет до начала">Якщо робота недоречна — скаже до початку</li>
-                <li data-ua="Онлайн, конфіденційно з будь-якої країни" data-ru="Онлайн, конфиденциально из любой страны">Онлайн, конфіденційно з будь-якої країни</li>
-              </ul>
+
+            <!-- SVG: путь стартует с y=0, заканчивается на y=580 -->
+            <svg viewBox="0 0 1920 580"
+                 xmlns="http://www.w3.org/2000/svg"
+                 style="width:100%; height:auto; display:block; overflow:visible;"
+                 preserveAspectRatio="xMidYMid meet">
+
+              <!-- Декоративные звёздочки -->
+              <text x="175"  y="120" fill="#FFD700" font-size="46" opacity="0.25" font-family="serif">✦</text>
+              <text x="1720" y="145" fill="#FFD700" font-size="36" opacity="0.20" font-family="serif">✦</text>
+              <text x="135"  y="355" fill="#FFD700" font-size="42" opacity="0.22" font-family="serif">✦</text>
+              <text x="1750" y="335" fill="#FFD700" font-size="32" opacity="0.18" font-family="serif">✦</text>
+              <text x="910"  y="270" fill="#FFD700" font-size="28" opacity="0.14" font-family="serif">✦</text>
+
+              <!-- Свечения на изгибах -->
+              <ellipse cx="1590" cy="105" rx="200" ry="90" fill="#5e2133" fill-opacity="0.07"/>
+              <ellipse cx="330"  cy="290" rx="200" ry="90" fill="#5e2133" fill-opacity="0.07"/>
+              <ellipse cx="1590" cy="470" rx="200" ry="95" fill="#5e2133" fill-opacity="0.13"/>
+
+              <!-- ПУТЬ: под точками -->
+              <path id="serpentine-path"
+                d="M 960,0
+                   L 960,40
+                   C 1800,40 1800,160 960,200
+                   C 120,240 120,340 960,380
+                   C 1800,420 1800,520 960,560
+                   L 960,580"
+                fill="none"
+                stroke="#5e2133"
+                stroke-width="5"
+                stroke-opacity="0.70"
+                stroke-dasharray="16,10"
+              />
+
+              <!-- ШАГ 01: cx=1433 cy=59 -->
+              <circle cx="1433" cy="59"  r="22" fill="#5e2133"/>
+              <circle id="ring-01" cx="1433" cy="59"  r="40"
+                      fill="#5e2133" fill-opacity="0.13"
+                      stroke="#5e2133" stroke-width="1.5" stroke-opacity="0.35"/>
+              <line x1="1455" y1="59" x2="1555" y2="59"
+                    stroke="#5e2133" stroke-width="1.5" stroke-opacity="0.30"/>
+              <g class="step-label" style="cursor:default;">
+                <text x="1563" y="41"  fill="#FFD700" font-size="24" letter-spacing="4" font-family="Georgia,serif">01</text>
+                <text x="1563" y="99"  fill="#331520" font-size="30" font-family="Georgia,serif" font-weight="bold">Своё имя. Своё лицо.</text>
+              </g>
+
+              <!-- ШАГ 02: cx=1433 cy=158 -->
+              <circle cx="1433" cy="158" r="22" fill="#5e2133"/>
+              <circle id="ring-02" cx="1433" cy="158" r="40"
+                      fill="#5e2133" fill-opacity="0.13"
+                      stroke="#5e2133" stroke-width="1.5" stroke-opacity="0.35"/>
+              <line x1="1455" y1="158" x2="1555" y2="158"
+                    stroke="#5e2133" stroke-width="1.5" stroke-opacity="0.30"/>
+              <g class="step-label" style="cursor:default;">
+                <text x="1563" y="140" fill="#FFD700" font-size="24" letter-spacing="4" font-family="Georgia,serif">02</text>
+                <text x="1563" y="198" fill="#331520" font-size="30" font-family="Georgia,serif" font-weight="bold">Сначала диагностика</text>
+              </g>
+
+              <!-- ШАГ 03: cx=488 cy=239 — текст в 2 строки, не касается линии -->
+              <circle cx="488" cy="239" r="22" fill="#5e2133"/>
+              <circle id="ring-03" cx="488" cy="239" r="40"
+                      fill="#5e2133" fill-opacity="0.13"
+                      stroke="#5e2133" stroke-width="1.5" stroke-opacity="0.35"/>
+              <line x1="466" y1="239" x2="366" y2="239"
+                    stroke="#5e2133" stroke-width="1.5" stroke-opacity="0.30"/>
+              <g class="step-label" style="cursor:default;">
+                <text x="358" y="221" text-anchor="end" fill="#FFD700" font-size="24" letter-spacing="4" font-family="Georgia,serif">03</text>
+                <text x="358" y="259" text-anchor="end" fill="#331520" font-size="30" font-family="Georgia,serif" font-weight="bold">Без давления</text>
+                <text x="358" y="293" text-anchor="end" fill="#331520" font-size="30" font-family="Georgia,serif" font-weight="bold">и гарантий</text>
+              </g>
+
+              <!-- ШАГ 04: cx=488 cy=341 — текст ниже коннектора -->
+              <circle cx="488" cy="341" r="22" fill="#5e2133"/>
+              <circle id="ring-04" cx="488" cy="341" r="40"
+                      fill="#5e2133" fill-opacity="0.13"
+                      stroke="#5e2133" stroke-width="1.5" stroke-opacity="0.35"/>
+              <line x1="466" y1="341" x2="366" y2="341"
+                    stroke="#5e2133" stroke-width="1.5" stroke-opacity="0.30"/>
+              <g class="step-label" style="cursor:default;">
+                <text x="358" y="323" text-anchor="end" fill="#FFD700" font-size="24" letter-spacing="4" font-family="Georgia,serif">04</text>
+                <text x="358" y="381" text-anchor="end" fill="#331520" font-size="30" font-family="Georgia,serif" font-weight="bold">Понятный язык</text>
+              </g>
+
+              <!-- ШАГ 05: cx=1433 cy=419 -->
+              <circle cx="1433" cy="419" r="22" fill="#5e2133"/>
+              <circle id="ring-05" cx="1433" cy="419" r="40"
+                      fill="#5e2133" fill-opacity="0.13"
+                      stroke="#5e2133" stroke-width="1.5" stroke-opacity="0.35"/>
+              <line x1="1455" y1="419" x2="1555" y2="419"
+                    stroke="#5e2133" stroke-width="1.5" stroke-opacity="0.30"/>
+              <g class="step-label" style="cursor:default;">
+                <text x="1563" y="401" fill="#FFD700" font-size="24" letter-spacing="4" font-family="Georgia,serif">05</text>
+                <text x="1563" y="459" fill="#331520" font-size="30" font-family="Georgia,serif" font-weight="bold">Честность</text>
+              </g>
+
+              <!-- ШАГ 06: cx=1433 cy=521 -->
+              <circle cx="1433" cy="521" r="22" fill="#5e2133"/>
+              <circle id="ring-06" cx="1433" cy="521" r="40"
+                      fill="#5e2133" fill-opacity="0.13"
+                      stroke="#5e2133" stroke-width="1.5" stroke-opacity="0.35"/>
+              <line x1="1455" y1="521" x2="1555" y2="521"
+                    stroke="#5e2133" stroke-width="1.5" stroke-opacity="0.30"/>
+              <g class="step-label" style="cursor:default;">
+                <text x="1563" y="503" fill="#FFD700" font-size="24" letter-spacing="4" font-family="Georgia,serif">06</text>
+                <text x="1563" y="541" fill="#331520" font-size="30" font-family="Georgia,serif" font-weight="bold">Онлайн,</text>
+                <text x="1563" y="575" fill="#331520" font-size="30" font-family="Georgia,serif" font-weight="bold">конфиденциально</text>
+              </g>
+
+              <!-- ЗВЕЗДА-ПУТНИК -->
+              <defs>
+                <filter id="starGlow" x="-80%" y="-80%" width="260%" height="260%">
+                  <feGaussianBlur stdDeviation="4" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <g id="star-traveler" filter="url(#starGlow)">
+                <path d="M 0,-14 L 3.5,-3.5 L 14,0 L 3.5,3.5 L 0,14 L -3.5,3.5 L -14,0 L -3.5,-3.5 Z"
+                      fill="#fae7d2" stroke="#5e2133" stroke-width="2"/>
+                <circle r="4" fill="#5e2133" opacity="0.6"/>
+                <animateMotion id="starMotion" dur="8s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#serpentine-path" xlink:href="#serpentine-path"/>
+                </animateMotion>
+              </g>
+
+            </svg>
+
+            <!-- НИЖНЯЯ КНОПКА — перекрывает низ SVG на 30px -->
+            <div style="display:flex; justify-content:center; position:relative; z-index:10; margin-top:-30px;">
+              <button style="background:rgba(237,207,178,0.35); border:1.5px solid #5e2133; color:#331520; border-radius:50px; padding:14px 44px; font-size:17px; font-weight:600; font-family:'Lato',Arial,sans-serif; cursor:default;">Ясность достигнута ✦</button>
             </div>
+
           </div>
 
         </div>
@@ -670,6 +789,12 @@
           }
           if (vantaEffect && vantaEffect.scene) {
             vantaEffect.scene.background = null;
+          }
+          // Force resize so Vanta picks up correct dimensions on mobile
+          if (vantaEffect && vantaEffect.resize) {
+            setTimeout(function() {
+              if (vantaEffect && vantaEffect.resize) vantaEffect.resize();
+            }, 200);
           }
         }
 

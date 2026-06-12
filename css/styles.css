@@ -1330,13 +1330,15 @@ body.menu-open {
   }
 
   .situations-subhead {
-    font-size: clamp(25px, 8vw, 34px);
+    font-size: clamp(15px, 3.8vw, 18px);
   }
 
   .situations-vanta-zone {
-    min-height: 205px;
-    margin-top: -4px;
-    opacity: 0.76;
+    min-height: 320px;
+    margin-top: 0;
+    margin-right: 0;
+    opacity: 1;
+    overflow: hidden;
   }
 
   .situations-vanta-light {
@@ -1347,14 +1349,14 @@ body.menu-open {
     opacity: 0.34;
   }
 
+  /* On mobile: simplify to fill the zone — no complex negative insets that can clip the globe */
   .situations-vanta-mask {
-    inset: -8% -12% -8% -12%;
-    -webkit-mask-image:
-      linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%),
-      linear-gradient(180deg, transparent 0, #000 12%, #000 80%, transparent 100%);
-    mask-image:
-      linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%),
-      linear-gradient(180deg, transparent 0, #000 12%, #000 80%, transparent 100%);
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    -webkit-mask-image: none;
+    mask-image: none;
+    filter: none;
   }
 
   .situations-vanta-mask::before {
@@ -1362,8 +1364,11 @@ body.menu-open {
   }
 
   .situations-vanta {
-    inset: -4% -8% -18% -8%;
-    min-height: 300px;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
     filter: brightness(1.55) saturate(1.18) contrast(1.05);
   }
 
@@ -1422,8 +1427,8 @@ body.menu-open {
 
   .hero-title {
     max-width: 100%;
-    font-size: clamp(36px, 12vw, 54px);
-    line-height: 0.98;
+    font-size: clamp(26px, 7.5vw, 40px);
+    line-height: 1.05;
   }
 
   .hero-copy {
@@ -1483,23 +1488,60 @@ body.menu-open {
   }
 }
 
+@media (max-width: 480px) {
+  /* Smaller h2 headings on very narrow screens */
+  .section h2 {
+    font-size: clamp(22px, 6.5vw, 30px);
+  }
+  /* Body text sizes */
+  .lead {
+    font-size: 15px;
+  }
+  /* More breathing room on narrow phones for text sections (NOT hero — it uses its own padding) */
+  .situations-section .container,
+  .section-wine .container,
+  .section-daynight .container,
+  .section-dmitry .container,
+  .faq-mini .container,
+  .cta-band .container {
+    width: min(100% - 40px, var(--container));
+  }
+}
+
 /* =====================================================
    BLOCK 6: ABOUT DMITRY — certificates + stats + qualities
    ===================================================== */
 
 .section-dmitry {
   background:
-    radial-gradient(circle at 82% 12%, rgba(110, 40, 60, 0.26), transparent 50%),
-    radial-gradient(circle at 12% 86%, rgba(58, 20, 34, 0.22), transparent 44%),
-    #0d090c;
+    url('../assets/images/backgrounds/bg-svet-diplom.jpg') center center / cover no-repeat;
   border-block: 1px solid rgba(255, 255, 255, 0.045);
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.section-dmitry > .container > .eyebrow {
+  text-align: center;
+}
+
+.section-dmitry > .container > h2 {
+  color: var(--accent-wine);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-dmitry > .container > h2.h2-revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: clamp(10px, 1.4vw, 16px);
-  margin-top: clamp(28px, 3vw, 44px);
+  margin-top: 0;
   margin-bottom: clamp(36px, 4vw, 52px);
 }
 
@@ -1533,6 +1575,29 @@ body.menu-open {
   transition: filter 0.30s ease;
 }
 
+.cert-card {
+  border: 2px solid #5e2133;
+  box-shadow: 0 0 18px rgba(110, 40, 60, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background-color: #331520;
+  border-radius: var(--radius-md);
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+.cert-card.cert-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cert-card.cert-visible:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 32px rgba(110, 40, 60, 0.55);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+}
+
 .cert-card:hover .cert-frame {
   box-shadow: 0 12px 44px rgba(0, 0, 0, 0.60);
 }
@@ -1551,12 +1616,14 @@ body.menu-open {
   display: flex;
   justify-content: center;
   gap: 0;
-  margin-top: clamp(32px, 4vw, 52px);
-  margin-bottom: clamp(36px, 4.5vw, 56px);
-  padding: clamp(22px, 2.8vw, 40px) clamp(24px, 3vw, 48px);
-  border: 1px solid rgba(218, 165, 32, 0.18);
+  margin-top: clamp(28px, 3vw, 44px);
+  margin-bottom: clamp(28px, 3vw, 40px);
+  padding: clamp(6px, 0.7vw, 10px) clamp(24px, 3vw, 48px);
+  border: 1px solid rgba(244, 234, 220, 0.18);
+  border-top: 1px solid rgba(244, 234, 220, 0.28);
   border-radius: var(--radius-lg);
-  background: rgba(218, 165, 32, 0.04);
+  background: linear-gradient(180deg, rgba(110, 40, 60, 0.80) 0%, rgba(58, 20, 34, 0.90) 100%);
+  box-shadow: 0 16px 48px rgba(20, 4, 10, 0.55);
 }
 
 .about-stat {
@@ -1572,7 +1639,7 @@ body.menu-open {
 .about-stat-num {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(44px, 5.5vw, 76px);
+  font-size: clamp(22px, 2.75vw, 38px);
   font-weight: 500;
   color: var(--accent-gold);
   line-height: 1;
@@ -1581,11 +1648,11 @@ body.menu-open {
 
 .about-stat-label {
   display: block;
-  font-size: clamp(11px, 0.85vw, 13px);
-  color: var(--text-secondary);
+  font-size: clamp(8px, 0.43vw, 9px);
+  color: rgba(244, 234, 220, 0.78);
   text-transform: uppercase;
   letter-spacing: 0.10em;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .about-body {
@@ -1654,6 +1721,63 @@ body.menu-open {
   }
 }
 
+/* =====================================================
+   BLOCK 6: SERPENTINE ANIMATIONS
+   ===================================================== */
+
+#serpentine-path {
+  stroke-dasharray: 16, 10;
+  animation: dashRun 1s linear infinite;
+}
+
+@keyframes dashRun {
+  to { stroke-dashoffset: -26; }
+}
+
+@keyframes dotPulse {
+  0%   { r: 40; opacity: 0.13; }
+  50%  { r: 60; opacity: 0.28; }
+  100% { r: 40; opacity: 0.13; }
+}
+
+#ring-01 { animation: dotPulse 0.8s ease-out 1.0s 1; }
+#ring-02 { animation: dotPulse 0.8s ease-out 3.0s 1; }
+#ring-03 { animation: dotPulse 0.8s ease-out 4.3s 1; }
+#ring-04 { animation: dotPulse 0.8s ease-out 5.7s 1; }
+#ring-05 { animation: dotPulse 0.8s ease-out 6.7s 1; }
+#ring-06 { animation: dotPulse 0.8s ease-out 7.7s 1; }
+
+.step-label {
+  transition: transform 0.3s ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.step-label:hover {
+  transform: translateY(-5px);
+}
+
+.btn-dark {
+  transition: transform 0.25s ease, background 0.25s ease;
+  will-change: transform;
+}
+
+.btn-dark:hover {
+  transform: translateY(-3px);
+  background: #7a2845;
+}
+
+.btn-light {
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  will-change: transform;
+}
+
+.btn-light:hover {
+  transform: translateY(-3px);
+  background: rgba(222, 188, 160, 0.50);
+  border-color: #331520;
+}
+
 /* ===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1665,4 +1789,11 @@ body.menu-open {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+
+  #serpentine-path { animation: none; }
+  #star-traveler   { display: none; }
+  .step-label,
+  .btn-dark,
+  .btn-light       { transition: none; }
+  [id^="ring-"]    { animation: none; }
 }
