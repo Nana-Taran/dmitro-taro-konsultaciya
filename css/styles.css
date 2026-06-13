@@ -1385,6 +1385,13 @@ body.menu-open {
   border: none;
 }
 
+.cta-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  cursor: default;
+}
+
 .cta-video-caption {
   margin-top: 12px;
   font-size: 13px;
