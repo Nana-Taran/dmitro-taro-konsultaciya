@@ -1587,6 +1587,52 @@ body.menu-open {
   letter-spacing: 0.06em;
 }
 
+/* Contact field with hint */
+.cta-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cta-field-hint {
+  font-size: 11px;
+  color: rgba(244, 234, 220, 0.45);
+  margin: 0;
+  padding-left: 4px;
+}
+
+/* Footer social icons */
+.footer-social-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--text-muted);
+  opacity: 0.6;
+  transition: opacity 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.footer-social-link:hover {
+  opacity: 1;
+  color: var(--accent-cream, #f4eadc);
+}
+
 .footer {
   padding: 44px 0;
   color: var(--text-muted);

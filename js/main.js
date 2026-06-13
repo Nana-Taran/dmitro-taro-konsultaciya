@@ -26,20 +26,68 @@ function initCtaForm() {
   const success = document.getElementById("cta-success");
   if (!form || !success) return;
 
-  form.addEventListener("submit", (e) => {
+  const TG_TOKEN = "8718709569:AAHpQ6hJADjj1ij483UO2YCSFAVWJgf9eJU";
+  const TG_CHAT  = "-5532543946";
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const name = form.elements["name"].value.trim();
-    const situation = form.elements["situation"].value.trim();
-    if (!name && !situation) {
+
+    const name      = (form.elements["name"]?.value      || "").trim();
+    const contact   = (form.elements["contact"]?.value   || "").trim();
+    const situation = (form.elements["situation"]?.value || "").trim();
+
+    if (!name && !contact && !situation) {
       form.elements["name"].focus();
       return;
     }
-    form.elements["name"].value = "";
-    form.elements["situation"].value = "";
-    success.hidden = false;
-    setTimeout(() => { success.hidden = true; }, 6000);
-    if (window.dataLayer) {
-      window.dataLayer.push({ event: "cta_form_submit" });
+
+    const submit = form.querySelector(".cta-submit");
+    submit.disabled = true;
+
+    const text =
+      `📩 Нова заявка з сайту dmitro.online!\n` +
+      `👤 Ім'я: ${name || "—"}\n` +
+      `📱 Як написати: ${contact || "—"}\n` +
+      `💬 Ситуація: ${situation || "—"}`;
+
+    try {
+      const res = await fetch(
+        `https://api.telegram.org/bot${TG_TOKEN}/sendMessage`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: "HTML" }),
+        }
+      );
+
+      if (!res.ok) throw new Error("tg_error");
+
+      form.elements["name"].value      = "";
+      form.elements["contact"].value   = "";
+      form.elements["situation"].value = "";
+
+      const span = success.querySelector("span");
+      if (span) {
+        span.dataset.ua = "Дякуємо! Дмитро зв'яжеться з вами найближчим часом 🙏";
+        span.dataset.ru = "Спасибо! Дмитрий свяжется с вами в ближайшее время 🙏";
+        window.DmitriiLang?.setLang(localStorage.getItem("dmitrii-lang") || "ua");
+      }
+      success.hidden = false;
+      setTimeout(() => { success.hidden = true; }, 5000);
+
+      if (window.dataLayer) window.dataLayer.push({ event: "cta_form_submit" });
+
+    } catch (_err) {
+      const span = success.querySelector("span");
+      if (span) {
+        span.dataset.ua = "Щось пішло не так. Напишіть напряму: @Odrad888";
+        span.dataset.ru = "Что-то пошло не так. Напишите напрямую в Telegram: @Odrad888";
+        window.DmitriiLang?.setLang(localStorage.getItem("dmitrii-lang") || "ua");
+      }
+      success.hidden = false;
+      setTimeout(() => { success.hidden = true; }, 6000);
+    } finally {
+      submit.disabled = false;
     }
   });
 }
