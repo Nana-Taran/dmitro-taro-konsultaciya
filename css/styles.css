@@ -1521,9 +1521,65 @@ body.menu-open {
   flex-shrink: 0;
 }
 
-.cta-messenger-tg   { background: #229ED9; }
-.cta-messenger-wa   { background: #25D366; }
-.cta-messenger-viber { background: #7360F2; }
+.cta-messenger-tg       { background: #229ED9; }
+.cta-messenger-wa       { background: #25D366; }
+.cta-messenger-viber    { background: #7360F2; }
+.cta-messenger-tiktok   { background: #010101; }
+.cta-messenger-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+
+/* Preferred messenger selector */
+.cta-preferred {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cta-preferred-label {
+  font-size: 13px;
+  color: rgba(244, 234, 220, 0.55);
+  margin: 0;
+}
+
+.cta-preferred-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cta-pill {
+  cursor: pointer;
+}
+
+.cta-pill input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.cta-pill span {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(110, 40, 60, 0.45);
+  background: rgba(244, 234, 220, 0.06);
+  color: rgba(244, 234, 220, 0.6);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.cta-pill:hover span {
+  border-color: var(--accent-wine, #6e283c);
+  color: var(--accent-cream, #f4eadc);
+}
+
+.cta-pill input[type="radio"]:checked + span {
+  background: var(--accent-wine, #6e283c);
+  border-color: var(--accent-wine, #6e283c);
+  color: var(--accent-cream, #f4eadc);
+}
 
 .cta-messenger-label {
   font-size: 11px;

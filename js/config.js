@@ -4,5 +4,7 @@ window.DMITRII_CONFIG = {
   telegramUrl: "https://t.me/Odrad888",
   viberUrl: "viber://chat?number=380639646753",
   whatsappUrl: "https://wa.me/380639646753",
+  tiktokUrl: "",
+  instagramUrl: "",
   formEndpoint: ""
 };
