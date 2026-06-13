@@ -1473,7 +1473,7 @@ body.menu-open {
 }
 
 .cta-success {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 8px;
   background: rgba(218, 165, 32, 0.15);
@@ -1483,6 +1483,10 @@ body.menu-open {
   color: var(--accent-cream, #f4eadc);
   font-size: 15px;
   font-weight: 600;
+}
+
+.cta-success:not([hidden]) {
+  display: flex;
 }
 
 /* Messenger icons row */
