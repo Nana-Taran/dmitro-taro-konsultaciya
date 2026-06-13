@@ -15,6 +15,11 @@ function setLang(lang) {
     if (typeof value === "string") el.setAttribute("alt", value);
   });
 
+  document.querySelectorAll("[data-placeholder-ua]").forEach((el) => {
+    const value = nextLang === "ru" ? el.dataset.placeholderRu : el.dataset.placeholderUa;
+    if (typeof value === "string") el.setAttribute("placeholder", value);
+  });
+
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     const active = btn.dataset.lang === nextLang;
     btn.classList.toggle("active", active);

@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initReviewCards();
   initFaqAccordion();
   initFab();
+  initCtaForm();
 
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".mobile-panel");
@@ -19,6 +20,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+function initCtaForm() {
+  const form = document.getElementById("cta-contact-form");
+  const success = document.getElementById("cta-success");
+  if (!form || !success) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = form.elements["name"].value.trim();
+    const situation = form.elements["situation"].value.trim();
+    if (!name && !situation) {
+      form.elements["name"].focus();
+      return;
+    }
+    form.elements["name"].value = "";
+    form.elements["situation"].value = "";
+    success.hidden = false;
+    setTimeout(() => { success.hidden = true; }, 6000);
+    if (window.dataLayer) {
+      window.dataLayer.push({ event: "cta_form_submit" });
+    }
+  });
+}
 
 function initFab() {
   const wrap = document.getElementById("fab-wrap");
