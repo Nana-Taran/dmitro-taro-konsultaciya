@@ -1480,7 +1480,7 @@ body.menu-open {
   border: 1px solid rgba(218, 165, 32, 0.45);
   border-radius: 8px;
   padding: 12px 16px;
-  color: var(--accent-wine, #6e283c);
+  color: var(--accent-cream, #f4eadc);
   font-size: 15px;
   font-weight: 600;
 }
