@@ -706,7 +706,7 @@ body.menu-open {
   max-width: 980px;
   margin: 14px 0 20px;
   font-family: var(--font-display);
-  font-size: clamp(40px, 6vw, 76px);
+  font-size: clamp(32px, 3.35vw, 58px);
   font-weight: 500;
   line-height: 1.02;
 }
