@@ -696,6 +696,32 @@ body.menu-open {
   font-size: 18px;
 }
 
+.geo-banner {
+  position: relative;
+  z-index: 40;
+  margin-top: 76px;
+  background: rgba(110, 40, 60, 0.13);
+  border-bottom: 1px solid rgba(110, 40, 60, 0.28);
+  padding: 11px 0;
+}
+.geo-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.geo-banner-text {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.geo-banner-btn {
+  padding: 7px 18px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
 .page-hero {
   position: relative;
   padding: 136px 0 72px;
