@@ -2672,6 +2672,98 @@ body.menu-open {
 }
 
 /* ===================================================== */
+/* VIDEO SECTION — o-dmitrii                           */
+/* ===================================================== */
+
+.section-videos {
+  background:
+    radial-gradient(circle at 14% 0%, rgba(120, 44, 64, 0.55), transparent 58%),
+    radial-gradient(circle at 88% 8%, rgba(68, 24, 40, 0.46), transparent 42%),
+    #100a0d;
+  padding-block: 38px !important;
+}
+
+.section-videos > .container > .eyebrow {
+  color: var(--accent-gold);
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  text-align: center;
+  width: 100%;
+}
+
+.section-videos > .container > h2 {
+  text-align: center;
+  width: 100%;
+  letter-spacing: 0.04em;
+}
+
+.section-videos > .container > .lead {
+  text-align: center;
+  opacity: 0.75;
+  max-width: 520px;
+  margin-inline: auto;
+  margin-top: 8px;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(10px, 1.2vw, 16px);
+  margin-top: clamp(24px, 3vw, 40px);
+}
+
+.video-card {
+  border: 1.5px solid rgba(110, 40, 60, 0.4);
+  box-shadow: 0 0 24px rgba(110, 40, 60, 0.2);
+  background: rgba(110, 40, 60, 0.07);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.video-card:hover {
+  border-color: rgba(110, 40, 60, 0.7);
+  box-shadow: 0 0 36px rgba(110, 40, 60, 0.4);
+}
+
+.video-card-embed {
+  position: relative;
+  padding-bottom: 177.77%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.video-card-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.video-card-caption {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: rgba(244, 234, 220, 0.75);
+  text-align: center;
+  border-top: 1px solid rgba(94, 33, 51, 0.5);
+  background: rgba(30, 8, 16, 0.6);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
   *,
