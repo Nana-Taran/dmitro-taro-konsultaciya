@@ -134,32 +134,75 @@
 
         </div>
       </section>
-<section class="section faq-mini"><div class="container"><p class="eyebrow" data-ua="FAQ" data-ru="FAQ">FAQ</p><h2 data-ua="Перед вибором послуги" data-ru="Перед выбором услуги">Перед вибором послуги</h2><p class="lead" data-ua="Якщо незрозуміло, що саме вам потрібно, це нормально. У таких темах часто починають не з послуги, а з розбору." data-ru="Если непонятно, что именно вам нужно, это нормально. В таких темах часто начинают не с услуги, а с разбора.">Якщо незрозуміло, що саме вам потрібно, це нормально. У таких темах часто починають не з послуги, а з розбору.</p><div class="faq-list faq-grid">
-            <article class="faq-item">
-              <h2 data-ua="Як вибрати послугу?" data-ru="Как выбрать услугу?">Як вибрати послугу?</h2>
-              <p data-ua="Не обов’язково вибирати самостійно. Опишіть ситуацію, і після розбору стане зрозуміло, що доречніше." data-ru="Не обязательно выбирать самостоятельно. Опишите ситуацию, и после разбора станет понятно, что уместнее.">Не обов’язково вибирати самостійно. Опишіть ситуацію, і після розбору стане зрозуміло, що доречніше.</p>
-            </article>
-            <article class="faq-item">
-              <h2 data-ua="Якщо я не знаю, що мені потрібно?" data-ru="Если я не знаю, что мне нужно?">Якщо я не знаю, що мені потрібно?</h2>
-              <p data-ua="Це часта ситуація. Коли боляче, людина шукає слово навмання: Таро, приворот, захист або діагностика." data-ru="Это частая ситуация. Когда больно, человек ищет слово наугад: Таро, приворот, защиту или диагностику.">Це часта ситуація. Коли боляче, людина шукає слово навмання: Таро, приворот, захист або діагностика.</p>
-            </article>
-            <article class="faq-item">
-              <h2 data-ua="З чого почати м’якше?" data-ru="С чего начать мягче?">З чого почати м’якше?</h2>
-              <p data-ua="З діагностики або Таро. Це дає ясність без різких рішень." data-ru="С диагностики или Таро. Это дает ясность без резких решений.">З діагностики або Таро. Це дає ясність без різких рішень.</p>
-            </article>
-            <article class="faq-item">
-              <h2 data-ua="Чи всі послуги підходять для реклами?" data-ru="Все ли услуги подходят для рекламы?">Чи всі послуги підходять для реклами?</h2>
-              <p data-ua="Ні. Деякі теми краще подавати обережніше: через діагностику, стосунки або перший розбір." data-ru="Нет. Некоторые темы лучше подавать осторожнее: через диагностику, отношения или первый разбор.">Ні. Деякі теми краще подавати обережніше: через діагностику, стосунки або перший розбір.</p>
-            </article>
-            <article class="faq-item">
-              <h2 data-ua="Чи можна перейти з однієї послуги в іншу?" data-ru="Можно перейти с одной услуги на другую?">Чи можна перейти з однієї послуги в іншу?</h2>
-              <p data-ua="Так. Після розбору може виявитися, що потрібен інший формат, ніж ви думали спочатку." data-ru="Да. После разбора может оказаться, что нужен другой формат, чем вы думали сначала.">Так. Після розбору може виявитися, що потрібен інший формат, ніж ви думали спочатку.</p>
-            </article>
-            <article class="faq-item">
-              <h2 data-ua="Що якщо послуга не потрібна?" data-ru="Что если услуга не нужна?">Що якщо послуга не потрібна?</h2>
-              <p data-ua="Тоді краще сказати це чесно. Не кожна складна ситуація потребує глибокої роботи." data-ru="Тогда лучше сказать это честно. Не каждая сложная ситуация требует глубокой работы.">Тоді краще сказати це чесно. Не кожна складна ситуація потребує глибокої роботи.</p>
-            </article>
-          </div></div></section>
+<section class="section faq-mini"><div class="container"><p class="eyebrow" data-ua="FAQ" data-ru="FAQ">FAQ</p><h2 data-ua="Перед вибором послуги" data-ru="Перед выбором услуги">Перед вибором послуги</h2><p class="lead" data-ua="Якщо незрозуміло, що саме вам потрібно, це нормально. У таких темах часто починають не з послуги, а з розбору." data-ru="Если непонятно, что именно вам нужно, это нормально. В таких темах часто начинают не с услуги, а с разбора.">Якщо незрозуміло, що саме вам потрібно, це нормально. У таких темах часто починають не з послуги, а з розбору.</p><div class="faq-list faq-accordion" id="faq-accordion">
+
+            <!-- Ліва колонка -->
+            <div class="faq-col">
+
+              <article class="faq-item open">
+                <button class="faq-question" aria-expanded="true">
+                  <span data-ua="Як вибрати послугу?" data-ru="Как выбрать услугу?">Як вибрати послугу?</span>
+                  <svg class="faq-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 6.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="faq-answer-wrap">
+                  <div class="faq-answer"><p data-ua="Не обов’язково вибирати самостійно. Опишіть ситуацію, і після розбору стане зрозуміло, що доречніше." data-ru="Не обязательно выбирать самостоятельно. Опишите ситуацию, и после разбора станет понятно, что уместнее.">Не обов’язково вибирати самостійно. Опишіть ситуацію, і після розбору стане зрозуміло, що доречніше.</p></div>
+                </div>
+              </article>
+              <article class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                  <span data-ua="Якщо я не знаю, що мені потрібно?" data-ru="Если я не знаю, что мне нужно?">Якщо я не знаю, що мені потрібно?</span>
+                  <svg class="faq-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 6.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="faq-answer-wrap">
+                  <div class="faq-answer"><p data-ua="Це часта ситуація. Коли боляче, людина шукає слово навмання: Таро, приворот, захист або діагностика." data-ru="Это частая ситуация. Когда больно, человек ищет слово наугад: Таро, приворот, защиту или диагностику.">Це часта ситуація. Коли боляче, людина шукає слово навмання: Таро, приворот, захист або діагностика.</p></div>
+                </div>
+              </article>
+              <article class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                  <span data-ua="З чого почати м’якше?" data-ru="С чего начать мягче?">З чого почати м’якше?</span>
+                  <svg class="faq-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 6.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="faq-answer-wrap">
+                  <div class="faq-answer"><p data-ua="З діагностики або Таро. Це дає ясність без різких рішень." data-ru="С диагностики или Таро. Это дает ясность без резких решений.">З діагностики або Таро. Це дає ясність без різких рішень.</p></div>
+                </div>
+              </article>
+
+            </div><!-- /faq-col -->
+
+            <!-- Права колонка -->
+            <div class="faq-col">
+
+              <article class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                  <span data-ua="Чи всі послуги підходять для реклами?" data-ru="Все ли услуги подходят для рекламы?">Чи всі послуги підходять для реклами?</span>
+                  <svg class="faq-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 6.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="faq-answer-wrap">
+                  <div class="faq-answer"><p data-ua="Ні. Деякі теми краще подавати обережніше: через діагностику, стосунки або перший розбір." data-ru="Нет. Некоторые темы лучше подавать осторожнее: через диагностику, отношения или первый разбор.">Ні. Деякі теми краще подавати обережніше: через діагностику, стосунки або перший розбір.</p></div>
+                </div>
+              </article>
+              <article class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                  <span data-ua="Чи можна перейти з однієї послуги в іншу?" data-ru="Можно перейти с одной услуги на другую?">Чи можна перейти з однієї послуги в іншу?</span>
+                  <svg class="faq-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 6.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="faq-answer-wrap">
+                  <div class="faq-answer"><p data-ua="Так. Після розбору може виявитися, що потрібен інший формат, ніж ви думали спочатку." data-ru="Да. После разбора может оказаться, что нужен другой формат, чем вы думали сначала.">Так. Після розбору може виявитися, що потрібен інший формат, ніж ви думали спочатку.</p></div>
+                </div>
+              </article>
+              <article class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                  <span data-ua="Що якщо послуга не потрібна?" data-ru="Что если услуга не нужна?">Що якщо послуга не потрібна?</span>
+                  <svg class="faq-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 6.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="faq-answer-wrap">
+                  <div class="faq-answer"><p data-ua="Тоді краще сказати це чесно. Не кожна складна ситуація потребує глибокої роботи." data-ru="Тогда лучше сказать это честно. Не каждая сложная ситуация требует глубокой работы.">Тоді краще сказати це чесно. Не кожна складна ситуація потребує глибокої роботи.</p></div>
+                </div>
+              </article>
+
+            </div><!-- /faq-col -->
+
+          </div></div></div></section>
     </main>
     <footer class="footer">
       <div class="container footer-grid">
