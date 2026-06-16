@@ -1315,10 +1315,24 @@ body.menu-open {
   display: block;
   width: 100%;
   text-align: center;
-  margin-top: clamp(12px, 1.4vw, 16px);
   font-size: clamp(12px, 0.88vw, 14px) !important;
   padding: 10px 12px !important;
   box-sizing: border-box;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: clamp(12px, 1.4vw, 16px);
+}
+.card-actions .btn-card {
+  flex: 1;
+  margin-top: 0;
+}
+.btn-outline {
+  border: 1px solid var(--accent-wine);
+  background: transparent;
+  color: inherit;
 }
 
 @media (max-width: 1100px) {
