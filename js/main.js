@@ -58,9 +58,6 @@ function initCtaForm() {
   const success = document.getElementById("cta-success");
   if (!form || !success) return;
 
-  const TG_TOKEN = "8718709569:AAHpQ6hJADjj1ij483UO2YCSFAVWJgf9eJU";
-  const TG_CHAT  = "-5532543946";
-
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -76,21 +73,12 @@ function initCtaForm() {
     const submit = form.querySelector(".cta-submit");
     submit.disabled = true;
 
-    const text =
-      `📩 Нова заявка з сайту dmitro.online!\n` +
-      `👤 Ім'я: ${name || "—"}\n` +
-      `📱 Як написати: ${contact || "—"}\n` +
-      `💬 Ситуація: ${situation || "—"}`;
-
     try {
-      const res = await fetch(
-        `https://api.telegram.org/bot${TG_TOKEN}/sendMessage`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: "HTML" }),
-        }
-      );
+      const res = await fetch("/api/send-tg", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, contact, situation }),
+      });
 
       if (!res.ok) throw new Error("tg_error");
 
