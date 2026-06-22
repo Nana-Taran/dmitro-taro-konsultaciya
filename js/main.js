@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFaqAccordion();
   initFab();
   initCtaForm();
+  initGtmEvents();
 
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".mobile-panel");
@@ -20,6 +21,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// Отправка кликов по мессенджерам в dataLayer (GTM).
+// Срабатывает двумя путями:
+//  1) по разметке data-gtm-event="click_telegram|click_whatsapp|click_viber" (FAB-кнопки);
+//  2) по href любой ссылки на Telegram/WhatsApp/Viber — так ловятся и основные CTA-кнопки
+//     "Написати Дмитру", у которых data-gtm-event нет (без правки HTML на всех страницах).
+function initGtmEvents() {
+  window.dataLayer = window.dataLayer || [];
+
+  function eventFromHref(href) {
+    if (!href) return "";
+    if (href.indexOf("t.me/") !== -1) return "click_telegram";
+    if (href.indexOf("wa.me/") !== -1 || href.indexOf("whatsapp") !== -1) return "click_whatsapp";
+    if (href.indexOf("viber:") !== -1) return "click_viber";
+    return "";
+  }
+
+  document.addEventListener("click", (e) => {
+    const tagged = e.target.closest("[data-gtm-event]");
+    const link = e.target.closest('a[href]');
+    const event = tagged
+      ? tagged.getAttribute("data-gtm-event")
+      : eventFromHref(link && link.getAttribute("href"));
+    if (!event) return;
+    window.dataLayer.push({
+      event: event,
+      label: (tagged && tagged.getAttribute("data-gtm-label")) ||
+             (link && (link.getAttribute("aria-label") || link.className)) || ""
+    });
+  }, true);
+}
 
 function initCtaForm() {
   const form = document.getElementById("cta-contact-form");
