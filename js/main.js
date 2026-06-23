@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFab();
   initCtaForm();
   initGtmEvents();
+  initContactPopup();
 
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".mobile-panel");
@@ -396,4 +397,207 @@ function initHeroVideo() {
   );
 
   observer.observe(hero);
+}
+
+// ─── CONTACT POPUP ────────────────────────────────────────────────────────────
+// Перехватывает клики по .btn-primary и .footer-cta-btn ведущим на t.me/Odrad888,
+// открывает форму-заявку вместо перехода в Telegram.
+// FAB кнопки (class fab-item) — исключены, работают как прежде.
+function initContactPopup() {
+  const lang = () => document.documentElement.lang === "ru" ? "ru" : "ua";
+
+  // ── HTML попапа ──────────────────────────────────────────────────────────
+  const popup = document.createElement("div");
+  popup.id = "contact-popup-overlay";
+  popup.className = "popup-overlay";
+  popup.setAttribute("hidden", "");
+  popup.setAttribute("role", "dialog");
+  popup.setAttribute("aria-modal", "true");
+  popup.innerHTML = `
+    <div class="popup" id="contact-popup">
+      <button class="popup-close" type="button" aria-label="Закрити">✕</button>
+      <h2 class="popup-title"
+          data-ua="Залишити заявку"
+          data-ru="Оставить заявку">Залишити заявку</h2>
+      <form id="contact-popup-form" class="popup-form" novalidate>
+
+        <div class="popup-field">
+          <input type="text" name="name" class="popup-input"
+            data-placeholder-ua="Ваше ім'я"
+            data-placeholder-ru="Ваше имя"
+            placeholder="Ваше ім'я"
+            autocomplete="name">
+        </div>
+
+        <div class="popup-field">
+          <input type="tel" name="phone" class="popup-input"
+            data-placeholder-ua="Ваш номер телефону"
+            data-placeholder-ru="Ваш номер телефона"
+            placeholder="Ваш номер телефону"
+            autocomplete="tel">
+        </div>
+
+        <div class="popup-field" id="popup-messenger-field">
+          <p class="popup-label"
+             data-ua="Виберіть месенджер"
+             data-ru="Выберите мессенджер">Виберіть месенджер</p>
+          <div class="popup-messengers" id="popup-messengers">
+            <button type="button" class="popup-messenger-btn" data-messenger="Telegram">Telegram</button>
+            <button type="button" class="popup-messenger-btn" data-messenger="WhatsApp">WhatsApp</button>
+            <button type="button" class="popup-messenger-btn" data-messenger="Viber">Viber</button>
+          </div>
+          <input type="hidden" name="messenger" id="popup-messenger-value">
+        </div>
+
+        <div class="popup-field">
+          <textarea name="situation" class="popup-input popup-textarea"
+            data-placeholder-ua="Декілька слів про ситуацію..."
+            data-placeholder-ru="Несколько слов о ситуации..."
+            placeholder="Декілька слів про ситуацію..."
+            rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="popup-submit"
+          data-ua="Надіслати заявку →"
+          data-ru="Отправить заявку →">Надіслати заявку →</button>
+
+        <div id="popup-status" class="popup-status" hidden>
+          <span
+            data-ua="Дякуємо! Дмитро зв'яжеться з вами найближчим часом."
+            data-ru="Спасибо! Дмитрий свяжется с вами в ближайшее время.">
+            Дякуємо! Дмитро зв'яжеться з вами найближчим часом.
+          </span>
+        </div>
+
+      </form>
+    </div>`;
+  document.body.appendChild(popup);
+
+  // ── Синхронизация языка ──────────────────────────────────────────────────
+  function syncLang() {
+    const l = lang();
+    popup.querySelectorAll("[data-ua][data-ru]").forEach(el => {
+      if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+        el.placeholder = el.dataset[l === "ua" ? "placeholderUa" : "placeholderRu"] || "";
+      } else {
+        el.textContent = el.dataset[l === "ua" ? "ua" : "ru"] || el.textContent;
+      }
+    });
+  }
+
+  // ── Открытие / закрытие ──────────────────────────────────────────────────
+  function openPopup() {
+    syncLang();
+    popup.removeAttribute("hidden");
+    requestAnimationFrame(() => popup.classList.add("popup-visible"));
+    document.body.style.overflow = "hidden";
+    popup.querySelector(".popup-close").focus();
+  }
+
+  function closePopup() {
+    popup.classList.remove("popup-visible");
+    setTimeout(() => {
+      popup.setAttribute("hidden", "");
+      document.body.style.overflow = "";
+      resetForm();
+    }, 220);
+  }
+
+  function resetForm() {
+    const form = document.getElementById("contact-popup-form");
+    form.reset();
+    document.getElementById("popup-messenger-value").value = "";
+    form.querySelectorAll(".popup-messenger-btn").forEach(b => b.classList.remove("active"));
+    form.querySelectorAll(".popup-error").forEach(el => el.classList.remove("popup-error"));
+    document.getElementById("popup-status").hidden = true;
+    form.querySelector(".popup-submit").disabled = false;
+  }
+
+  // Закрытие по крестику и клику на оверлей
+  popup.querySelector(".popup-close").addEventListener("click", closePopup);
+  popup.addEventListener("click", e => { if (e.target === popup) closePopup(); });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && !popup.hasAttribute("hidden")) closePopup();
+  });
+
+  // ── Выбор мессенджера ────────────────────────────────────────────────────
+  document.getElementById("popup-messengers").addEventListener("click", e => {
+    const btn = e.target.closest(".popup-messenger-btn");
+    if (!btn) return;
+    document.querySelectorAll(".popup-messenger-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("popup-messenger-value").value = btn.dataset.messenger;
+    document.getElementById("popup-messengers").classList.remove("popup-error");
+  });
+
+  // ── Валидация ────────────────────────────────────────────────────────────
+  function validate(form) {
+    let ok = true;
+    const name = form.elements["name"];
+    const phone = form.elements["phone"];
+    const messenger = form.elements["messenger"];
+    [name, phone].forEach(el => {
+      if (!el.value.trim()) { el.classList.add("popup-error"); ok = false; }
+      else el.classList.remove("popup-error");
+    });
+    if (!messenger.value) {
+      document.getElementById("popup-messengers").classList.add("popup-error");
+      ok = false;
+    }
+    return ok;
+  }
+
+  // ── Отправка ─────────────────────────────────────────────────────────────
+  document.getElementById("contact-popup-form").addEventListener("submit", async e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    if (!validate(form)) return;
+
+    const submit = form.querySelector(".popup-submit");
+    submit.disabled = true;
+
+    const payload = {
+      name:      form.elements["name"].value.trim(),
+      phone:     form.elements["phone"].value.trim(),
+      messenger: form.elements["messenger"].value,
+      situation: form.elements["situation"].value.trim(),
+      page:      window.location.href
+    };
+
+    try {
+      const res = await fetch("/api/send-tg", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error();
+      const status = document.getElementById("popup-status");
+      const span = status.querySelector("span");
+      const l = lang();
+      if (span) {
+        span.textContent = l === "ua"
+          ? "Дякуємо! Дмитро зв'яжеться з вами найближчим часом."
+          : "Спасибо! Дмитрий свяжется с вами в ближайшее время.";
+      }
+      form.querySelector(".popup-submit").style.display = "none";
+      status.hidden = false;
+      if (window.dataLayer) window.dataLayer.push({ event: "popup_form_submit", messenger: payload.messenger });
+      setTimeout(closePopup, 3500);
+    } catch {
+      submit.disabled = false;
+    }
+  });
+
+  // ── Перехват кнопок → t.me ───────────────────────────────────────────────
+  // Перехватываем .btn-primary и .footer-cta-btn → t.me/Odrad888
+  // Исключаем FAB (родитель с классом fab-item) и текстовые @Odrad888 ссылки
+  document.addEventListener("click", e => {
+    const link = e.target.closest('a[href="https://t.me/Odrad888"]');
+    if (!link) return;
+    const isFab = !!link.closest(".fab-item");
+    const isBtn = link.classList.contains("btn-primary") || link.classList.contains("footer-cta-btn");
+    if (isFab || !isBtn) return;
+    e.preventDefault();
+    openPopup();
+  });
 }

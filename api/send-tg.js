@@ -3,13 +3,26 @@ export default async function handler(req, res) {
     return res.status(405).json({ ok: false, error: "Method not allowed" });
   }
 
-  const { name, contact, situation } = req.body || {};
+  const { name, phone, messenger, situation, page, contact } = req.body || {};
 
-  const text =
-    `📩 Нова заявка з сайту dmitro.online!\n` +
-    `👤 Ім'я: ${name || "—"}\n` +
-    `📱 Як написати: ${contact || "—"}\n` +
-    `💬 Ситуація: ${situation || "—"}`;
+  // Popup form (new format)
+  const isPopup = phone !== undefined || messenger !== undefined;
+
+  const text = isPopup
+    ? [
+        "📋 Нова заявка з сайту",
+        `👤 Ім'я: ${name || "—"}`,
+        `📞 Телефон: ${phone || "—"}`,
+        `💬 Месенджер: ${messenger || "—"}`,
+        `📝 Ситуація: ${situation || "не вказано"}`,
+        `🌐 Сторінка: ${page || "—"}`,
+      ].join("\n")
+    : [
+        "📩 Нова заявка з сайту dmitro.online!",
+        `👤 Ім'я: ${name || "—"}`,
+        `📱 Як написати: ${contact || "—"}`,
+        `💬 Ситуація: ${situation || "—"}`,
+      ].join("\n");
 
   const tgRes = await fetch(
     `https://api.telegram.org/bot${process.env.TG_TOKEN}/sendMessage`,
