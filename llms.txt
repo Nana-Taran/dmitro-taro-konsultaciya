@@ -10,30 +10,30 @@
 
 Основні сторінки:
 
-- SITE_URL/
-- SITE_URL/posluhy/
-- SITE_URL/diagnostika-otnosheniy/
-- SITE_URL/taro-na-otnosheniya/
-- SITE_URL/posle-ssory/
-- SITE_URL/lyubovnaya-rabota/
-- SITE_URL/zaschita-ochischenie/
-- SITE_URL/stoimost/
-- SITE_URL/o-dmitrii/
-- SITE_URL/faq/
-- SITE_URL/kontakty/
+- https://dmitro.online/
+- https://dmitro.online/posluhy/
+- https://dmitro.online/diagnostika-otnosheniy/
+- https://dmitro.online/taro-na-otnosheniya/
+- https://dmitro.online/posle-ssory/
+- https://dmitro.online/lyubovnaya-rabota/
+- https://dmitro.online/zaschita-ochischenie/
+- https://dmitro.online/stoimost/
+- https://dmitro.online/o-dmitrii/
+- https://dmitro.online/faq/
+- https://dmitro.online/kontakty/
 
 Прямі SEO-сторінки послуг:
 
-- SITE_URL/posluhy/lyubovna-magiya.html
-- SITE_URL/posluhy/pryvorot.html
-- SITE_URL/posluhy/vidvorot.html
-- SITE_URL/posluhy/znyattia-porchi.html
-- SITE_URL/posluhy/ochyshchennia.html
-- SITE_URL/posluhy/zakhyst.html
-- SITE_URL/posluhy/hroshova-magiya.html
+- https://dmitro.online/posluhy/lyubovna-magiya.html
+- https://dmitro.online/posluhy/pryvorot.html
+- https://dmitro.online/posluhy/vidvorot.html
+- https://dmitro.online/posluhy/znyattia-porchi.html
+- https://dmitro.online/posluhy/ochyshchennia.html
+- https://dmitro.online/posluhy/zakhyst.html
+- https://dmitro.online/posluhy/hroshova-magiya.html
 
 AI-readable summaries:
 
-- SITE_URL/ai/dmitrii-summary.md
-- SITE_URL/ai/services.md
-- SITE_URL/ai/faq.md
+- https://dmitro.online/ai/dmitrii-summary.md
+- https://dmitro.online/ai/services.md
+- https://dmitro.online/ai/faq.md

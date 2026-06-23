@@ -459,7 +459,7 @@ body.menu-open {
 .section-daynight {
   background:
     linear-gradient(rgba(16, 10, 13, 0.22), rgba(16, 10, 13, 0.22)),
-    url('../assets/images/backgrounds/bg-nebesa-svet-temnota.jpg') center center / cover no-repeat;
+    url('../assets/images/backgrounds/bg-nebesa-svet-temnota.webp') center center / cover no-repeat;
   padding-block: 38px !important;
   border-block: 1px solid rgba(255, 255, 255, 0.055);
 }
@@ -603,18 +603,18 @@ body.menu-open {
 }
 .trust-header-icon img { display: none; }
 
-.ti-hdr-risk { background-image: url('../assets/icons/header-risk.png'); }
-.ti-hdr-good { background-image: url('../assets/icons/header-good.png'); }
-.ti-risk-1   { background-image: url('../assets/icons/risk-1.png'); }
-.ti-risk-2   { background-image: url('../assets/icons/risk-2.png'); }
-.ti-risk-3   { background-image: url('../assets/icons/risk-3.png'); }
-.ti-risk-4   { background-image: url('../assets/icons/risk-4.png'); }
-.ti-risk-5   { background-image: url('../assets/icons/risk-5.png'); }
-.ti-good-1   { background-image: url('../assets/icons/good-1.png'); }
-.ti-good-2   { background-image: url('../assets/icons/good-2.png'); }
-.ti-good-3   { background-image: url('../assets/icons/good-3.png'); }
-.ti-good-4   { background-image: url('../assets/icons/good-4.png'); }
-.ti-good-5   { background-image: url('../assets/icons/good-5.png'); }
+.ti-hdr-risk { background-image: url('../assets/icons/header-risk.webp'); }
+.ti-hdr-good { background-image: url('../assets/icons/header-good.webp'); }
+.ti-risk-1   { background-image: url('../assets/icons/risk-1.webp'); }
+.ti-risk-2   { background-image: url('../assets/icons/risk-2.webp'); }
+.ti-risk-3   { background-image: url('../assets/icons/risk-3.webp'); }
+.ti-risk-4   { background-image: url('../assets/icons/risk-4.webp'); }
+.ti-risk-5   { background-image: url('../assets/icons/risk-5.webp'); }
+.ti-good-1   { background-image: url('../assets/icons/good-1.webp'); }
+.ti-good-2   { background-image: url('../assets/icons/good-2.webp'); }
+.ti-good-3   { background-image: url('../assets/icons/good-3.webp'); }
+.ti-good-4   { background-image: url('../assets/icons/good-4.webp'); }
+.ti-good-5   { background-image: url('../assets/icons/good-5.webp'); }
 
 /* Текст пункту */
 .trust-text {
@@ -645,7 +645,7 @@ body.menu-open {
   .section-daynight {
     background:
       linear-gradient(rgba(16, 10, 13, 0.28), rgba(16, 10, 13, 0.28)),
-      url('../assets/images/backgrounds/bg-nebesa-svet-temnota.jpg') 42% center / cover no-repeat;
+      url('../assets/images/backgrounds/bg-nebesa-svet-temnota.webp') 42% center / cover no-repeat;
   }
   .trust-center-scales {
     flex: 0 0 180px;
@@ -659,7 +659,7 @@ body.menu-open {
   .section-daynight {
     background:
       linear-gradient(rgba(16, 10, 13, 0.32), rgba(16, 10, 13, 0.32)),
-      url('../assets/images/backgrounds/bg-nebesa-svet-temnota.jpg') 38% center / cover no-repeat;
+      url('../assets/images/backgrounds/bg-nebesa-svet-temnota.webp') 38% center / cover no-repeat;
   }
   .trust-grid {
     flex-direction: column;
@@ -2224,7 +2224,7 @@ body.menu-open {
 
 .section-dmitry {
   background:
-    url('../assets/images/backgrounds/bg-svet-diplom.jpg') center center / cover no-repeat;
+    url('../assets/images/backgrounds/bg-svet-diplom.webp') center center / cover no-repeat;
   border-block: 1px solid rgba(255, 255, 255, 0.045);
   padding-top: 40px;
   padding-bottom: 40px;
