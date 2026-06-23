@@ -96,7 +96,7 @@ function initCtaForm() {
       success.hidden = false;
       setTimeout(() => { success.hidden = true; }, 5000);
 
-      if (window.dataLayer) window.dataLayer.push({ event: "cta_form_submit" });
+      if (window.dataLayer) window.dataLayer.push({ event: "form_submit", form_type: "cta" });
 
     } catch (_err) {
       const span = success.querySelector("span");
@@ -581,7 +581,7 @@ function initContactPopup() {
       }
       form.querySelector(".popup-submit").style.display = "none";
       status.hidden = false;
-      if (window.dataLayer) window.dataLayer.push({ event: "popup_form_submit", messenger: payload.messenger });
+      if (window.dataLayer) window.dataLayer.push({ event: "form_submit", form_type: "popup", messenger: payload.messenger });
       setTimeout(closePopup, 3500);
     } catch {
       submit.disabled = false;
