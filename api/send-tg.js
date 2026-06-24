@@ -5,7 +5,7 @@ export default async function handler(req, res) {
 
   const { name, phone, messenger, situation, page, contact } = req.body || {};
 
-  // Popup form (new format)
+  // New format: phone + messenger (popup form and updated CTA form)
   const isPopup = phone !== undefined || messenger !== undefined;
 
   const text = isPopup

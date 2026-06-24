@@ -59,17 +59,39 @@ function initCtaForm() {
   const success = document.getElementById("cta-success");
   if (!form || !success) return;
 
+  // Messenger button toggle
+  const ctaMessengers = document.getElementById("cta-messengers");
+  const ctaMessengerValue = document.getElementById("cta-messenger-value");
+  if (ctaMessengers) {
+    ctaMessengers.addEventListener("click", e => {
+      const btn = e.target.closest(".popup-messenger-btn");
+      if (!btn) return;
+      ctaMessengers.querySelectorAll(".popup-messenger-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      ctaMessengerValue.value = btn.dataset.messenger;
+      ctaMessengers.classList.remove("popup-error");
+    });
+  }
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const name      = (form.elements["name"]?.value      || "").trim();
-    const contact   = (form.elements["contact"]?.value   || "").trim();
+    const phone     = (form.elements["phone"]?.value     || "").trim();
+    const messenger = (form.elements["messenger"]?.value || "").trim();
     const situation = (form.elements["situation"]?.value || "").trim();
 
-    if (!name && !contact && !situation) {
-      form.elements["name"].focus();
-      return;
+    // Validation
+    let ok = true;
+    if (!name)  { form.elements["name"].classList.add("popup-error");  ok = false; }
+    else          form.elements["name"].classList.remove("popup-error");
+    if (!phone) { form.elements["phone"].classList.add("popup-error"); ok = false; }
+    else          form.elements["phone"].classList.remove("popup-error");
+    if (!messenger && ctaMessengers) {
+      ctaMessengers.classList.add("popup-error");
+      ok = false;
     }
+    if (!ok) return;
 
     const submit = form.querySelector(".cta-submit");
     submit.disabled = true;
@@ -78,14 +100,16 @@ function initCtaForm() {
       const res = await fetch("/api/send-tg", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, contact, situation }),
+        body: JSON.stringify({ name, phone, messenger, situation, page: window.location.pathname }),
       });
 
       if (!res.ok) throw new Error("tg_error");
 
       form.elements["name"].value      = "";
-      form.elements["contact"].value   = "";
+      form.elements["phone"].value     = "";
       form.elements["situation"].value = "";
+      if (ctaMessengerValue) ctaMessengerValue.value = "";
+      if (ctaMessengers) ctaMessengers.querySelectorAll(".popup-messenger-btn").forEach(b => b.classList.remove("active"));
 
       const span = success.querySelector("span");
       if (span) {

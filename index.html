@@ -1111,15 +1111,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 >
                 <div class="cta-field-group">
                   <input
-                    type="text"
+                    type="tel"
                     class="cta-input"
-                    name="contact"
-                    data-placeholder-ua="Telegram @username або номер WhatsApp/Viber"
-                    data-placeholder-ru="Telegram @username или номер WhatsApp/Viber"
-                    placeholder="Telegram @username або номер WhatsApp/Viber"
-                    autocomplete="off"
+                    name="phone"
+                    data-placeholder-ua="Номер телефону"
+                    data-placeholder-ru="Номер телефона"
+                    placeholder="Номер телефону"
+                    autocomplete="tel"
                   >
-                  <p class="cta-field-hint" data-ua="Дмитро напише вам сам" data-ru="Дмитрий напишет вам сам">Дмитро напише вам сам</p>
+                </div>
+                <div class="cta-field-group">
+                  <p class="cta-field-hint" data-ua="Виберіть месенджер" data-ru="Выберите мессенджер">Виберіть месенджер</p>
+                  <div class="popup-messengers" id="cta-messengers">
+                    <button type="button" class="popup-messenger-btn" data-messenger="Telegram">Telegram</button>
+                    <button type="button" class="popup-messenger-btn" data-messenger="WhatsApp">WhatsApp</button>
+                    <button type="button" class="popup-messenger-btn" data-messenger="Viber">Viber</button>
+                  </div>
+                  <input type="hidden" name="messenger" id="cta-messenger-value">
                 </div>
                 <textarea
                   class="cta-input cta-textarea"
