@@ -665,22 +665,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="cert-grid">
             <div class="cert-card">
               <div class="cert-frame">
-                <img src="assets/images/certificates/cert-1.webp" alt="Сертифікат Дмитра — підтвердження кваліфікації" width="2000" height="1414">
+                <img src="assets/images/certificates/cert-1.webp" alt="Сертифікат Дмитра — підтвердження кваліфікації" width="2000" height="1414" loading="eager">
               </div>
             </div>
             <div class="cert-card">
               <div class="cert-frame">
-                <img src="assets/images/certificates/cert-2.webp" alt="Сертифікат Дмитра — підтвердження кваліфікації" width="2000" height="1414">
+                <img src="assets/images/certificates/cert-2.webp" alt="Сертифікат Дмитра — підтвердження кваліфікації" width="2000" height="1414" loading="eager">
               </div>
             </div>
             <div class="cert-card">
               <div class="cert-frame">
-                <img src="assets/images/certificates/cert-3.webp" alt="Сертифікат Дмитра — підтвердження кваліфікації" width="2000" height="1414">
+                <img src="assets/images/certificates/cert-3.webp" alt="Сертифікат Дмитра — підтвердження кваліфікації" width="2000" height="1414" loading="eager">
               </div>
             </div>
             <div class="cert-card">
               <div class="cert-frame">
-                <img src="assets/images/certificates/cert-4.webp" alt="Сертифікат Дмитра — підтвердження кваліфікації" width="2000" height="1414">
+                <img src="assets/images/certificates/cert-4.webp" alt="Сертифікат Дмитра — підтвердження кваліфікації" width="2000" height="1414" loading="eager">
               </div>
             </div>
           </div>
@@ -1263,44 +1263,73 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script>
       (function () {
         var vantaEffect = null;
+        var VANTA_FALLBACK = "radial-gradient(ellipse at center, #2d0a1e 0%, #1a0510 50%, #0d0208 100%)";
+
+        function webGLAvailable() {
+          try {
+            var canvas = document.createElement("canvas");
+            return !!(canvas.getContext("webgl") || canvas.getContext("experimental-webgl"));
+          } catch (e) {
+            return false;
+          }
+        }
+
+        function applyFallback() {
+          var zone = document.querySelector(".situations-vanta-zone");
+          if (zone) zone.style.background = VANTA_FALLBACK;
+          var el = document.getElementById("situations-vanta");
+          if (el) el.style.background = VANTA_FALLBACK;
+        }
 
         function initSituationsVanta() {
           var target = document.getElementById("situations-vanta");
-          if (!target || !window.VANTA || !window.VANTA.GLOBE || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+          if (!target || !window.VANTA || !window.VANTA.GLOBE || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            applyFallback();
+            return;
+          }
+          if (!webGLAvailable()) {
+            applyFallback();
+            return;
+          }
           if (vantaEffect) vantaEffect.destroy();
           var isMobileVanta = window.matchMedia("(max-width: 900px)").matches;
 
-          vantaEffect = window.VANTA.GLOBE({
-            el: target,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 260,
-            minWidth: 260,
-            scale: 1,
-            scaleMobile: 1,
-            color: 0xd4b598,
-            color2: 0x591d2f,
-            backgroundColor: 0x180a10,
-            size: isMobileVanta ? 1.08 : 1.26,
-            points: isMobileVanta ? 9 : 12,
-            maxDistance: 1,
-            spacing: isMobileVanta ? 18 : 16,
-            showDots: true
-          });
+          try {
+            vantaEffect = window.VANTA.GLOBE({
+              el: target,
+              mouseControls: true,
+              touchControls: true,
+              gyroControls: false,
+              minHeight: 260,
+              minWidth: 260,
+              scale: 1,
+              scaleMobile: 1,
+              color: 0xd4b598,
+              color2: 0x591d2f,
+              backgroundColor: 0x180a10,
+              size: isMobileVanta ? 1.08 : 1.26,
+              points: isMobileVanta ? 9 : 12,
+              maxDistance: 1,
+              spacing: isMobileVanta ? 18 : 16,
+              showDots: true
+            });
 
-          if (vantaEffect && vantaEffect.renderer) {
-            vantaEffect.renderer.setClearColor(0x000000, 0);
-            vantaEffect.renderer.setClearAlpha(0);
-          }
-          if (vantaEffect && vantaEffect.scene) {
-            vantaEffect.scene.background = null;
-          }
-          // Force resize so Vanta picks up correct dimensions on mobile
-          if (vantaEffect && vantaEffect.resize) {
-            setTimeout(function() {
-              if (vantaEffect && vantaEffect.resize) vantaEffect.resize();
-            }, 200);
+            if (vantaEffect && vantaEffect.renderer) {
+              vantaEffect.renderer.setClearColor(0x000000, 0);
+              vantaEffect.renderer.setClearAlpha(0);
+            }
+            if (vantaEffect && vantaEffect.scene) {
+              vantaEffect.scene.background = null;
+            }
+            if (vantaEffect && vantaEffect.resize) {
+              setTimeout(function() {
+                if (vantaEffect && vantaEffect.resize) vantaEffect.resize();
+              }, 200);
+            }
+          } catch (e) {
+            if (vantaEffect) { try { vantaEffect.destroy(); } catch (_) {} }
+            vantaEffect = null;
+            applyFallback();
           }
         }
 
