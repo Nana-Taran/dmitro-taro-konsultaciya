@@ -376,9 +376,10 @@ function initHeroVideo() {
     lastReplayAt = now;
     video.classList.remove("has-ended");
     video.classList.add("is-playing");
-    try {
-      video.currentTime = 0;
-    } catch (_error) {}
+    // Only seek to start on replay — seeking before first play aborts iOS autoplay
+    if (video.ended) {
+      try { video.currentTime = 0; } catch (_error) {}
+    }
 
     const playPromise = video.play();
     if (playPromise?.catch) {
@@ -397,9 +398,15 @@ function initHeroVideo() {
       video.classList.remove("is-playing");
       video.classList.add("has-ended");
     });
-    // Mobile fix: show video as soon as it starts playing via HTML autoplay attribute
+    // Show video as soon as it starts playing (covers HTML autoplay on iOS)
     video.addEventListener("playing", () => {
       video.classList.add("is-playing");
+    });
+    // iOS fallback: if video is ready but JS play() failed, show it anyway
+    video.addEventListener("canplaythrough", () => {
+      if (!video.paused && !video.classList.contains("is-playing")) {
+        video.classList.add("is-playing");
+      }
     });
   });
 

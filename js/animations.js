@@ -118,13 +118,21 @@ function initCertStagger() {
   const grid = document.querySelector(".cert-grid");
   if (!grid) return;
 
+  const showAll = () => {
+    grid.querySelectorAll(".cert-card").forEach(card => card.classList.add("cert-visible"));
+  };
+
+  // Safety net: show cards after 3s regardless of IntersectionObserver
+  const fallback = setTimeout(showAll, 3000);
+
   const observer = new IntersectionObserver((entries) => {
     if (!entries[0].isIntersecting) return;
+    clearTimeout(fallback);
     Array.from(grid.querySelectorAll(".cert-card")).forEach((card, i) => {
       setTimeout(() => card.classList.add("cert-visible"), i * 150);
     });
     observer.disconnect();
-  }, { threshold: 0.2 });
+  }, { threshold: 0.1 });
 
   observer.observe(grid);
 }

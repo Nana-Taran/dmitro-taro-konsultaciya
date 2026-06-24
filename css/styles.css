@@ -2292,12 +2292,16 @@ body.menu-open {
   -webkit-backdrop-filter: blur(8px);
   background-color: #331520;
   border-radius: var(--radius-md);
-  opacity: 0;
-  transform: scale(0.92);
   transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
 }
 
-.cert-card.cert-visible {
+/* Animation is progressive enhancement — only when JS runs */
+body.is-ready .cert-card {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+body.is-ready .cert-card.cert-visible {
   opacity: 1;
   transform: scale(1);
 }
