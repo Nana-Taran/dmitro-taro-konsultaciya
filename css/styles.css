@@ -2025,6 +2025,8 @@ body.menu-open {
     margin-right: 0;
     opacity: 1;
     overflow: hidden;
+    /* Static backdrop on mobile — Vanta globe is skipped here (iOS WebGL limit) */
+    background: radial-gradient(ellipse at center, #2d0a1e 0%, #1a0510 50%, #0d0208 100%);
   }
 
   .situations-vanta-light {
@@ -2292,24 +2294,29 @@ body.menu-open {
   -webkit-backdrop-filter: blur(8px);
   background-color: #331520;
   border-radius: var(--radius-md);
-  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
-}
-
-/* Animation is progressive enhancement — only when JS runs */
-body.is-ready .cert-card {
-  opacity: 0;
-  transform: scale(0.92);
-}
-
-body.is-ready .cert-card.cert-visible {
+  /* Always visible — entrance is pure CSS, never depends on JS */
   opacity: 1;
   transform: scale(1);
+  animation: certFadeIn 0.6s ease both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cert-card.cert-visible:hover {
+.cert-card:nth-child(2) { animation-delay: 0.12s; }
+.cert-card:nth-child(3) { animation-delay: 0.24s; }
+.cert-card:nth-child(4) { animation-delay: 0.36s; }
+
+@keyframes certFadeIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cert-card { animation: none; }
+}
+
+.cert-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 0 32px rgba(110, 40, 60, 0.55);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
 }
 
 .cert-card:hover .cert-frame {
