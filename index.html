@@ -156,7 +156,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=20260624-ios-fix2">
+    <link rel="stylesheet" href="css/styles.css?v=20260624-ios-fix3">
   <style>
   /* TRUST BLOCK 5 — FLEXBOX OVERRIDE (no clamp in layout) */
   .trust-grid {
@@ -1258,10 +1258,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="fab-label">Viber</span>
       </div>
     </div>
-    <script src="js/config.js?v=20260624-ios-fix2"></script>
-    <script src="js/lang.js?v=20260624-ios-fix2"></script>
-    <script src="js/animations.js?v=20260624-ios-fix2"></script>
-    <script src="js/main.js?v=20260624-ios-fix2"></script>
+    <script src="js/config.js?v=20260624-ios-fix3"></script>
+    <script src="js/lang.js?v=20260624-ios-fix3"></script>
+    <script src="js/animations.js?v=20260624-ios-fix3"></script>
+    <script src="js/main.js?v=20260624-ios-fix3"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
     <script>
@@ -1287,13 +1287,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         function initSituationsVanta() {
           var target = document.getElementById("situations-vanta");
-          // iOS/mobile limits WebGL contexts (hero already uses video/canvas).
-          // Vanta GLOBE silently renders nothing there — so skip it and show the static gradient.
           var isMobileVanta = window.matchMedia("(max-width: 900px)").matches;
-          if (isMobileVanta) {
-            applyFallback();
-            return;
-          }
+          // If we can't run the real WebGL globe, the CSS-animated globe fallback stays visible.
           if (!target || !window.VANTA || !window.VANTA.GLOBE || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
             applyFallback();
             return;
@@ -1336,6 +1331,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 if (vantaEffect && vantaEffect.resize) vantaEffect.resize();
               }, 200);
             }
+            // Real globe is running — hide the CSS fallback globe
+            if (vantaEffect && target) target.classList.add("vanta-on");
           } catch (e) {
             if (vantaEffect) { try { vantaEffect.destroy(); } catch (_) {} }
             vantaEffect = null;

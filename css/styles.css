@@ -2086,6 +2086,9 @@ body.menu-open {
     to   { background-position: 0 0, 0 0, 200% 0; }
   }
 
+  /* When the real Vanta globe initialises, drop the CSS fallback */
+  .situations-vanta.vanta-on::before { display: none; }
+
   .hero {
     min-height: auto;
     padding: 76px 0 0;
