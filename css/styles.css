@@ -1832,6 +1832,34 @@ body.menu-open {
   color: var(--accent-wine, #6e283c);
 }
 
+.footer-credit {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-credit-name {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.footer-credit-links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.footer-credit-links a {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.32);
+}
+
 /* ── FAB (Floating Action Button) ── */
 .fab-wrap {
   position: fixed;
