@@ -24,32 +24,61 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Отправка кликов по мессенджерам в dataLayer (GTM).
-// Срабатывает двумя путями:
-//  1) по разметке data-gtm-event="click_telegram|click_whatsapp|click_viber" (FAB-кнопки);
-//  2) по href любой ссылки на Telegram/WhatsApp/Viber — так ловятся и основные CTA-кнопки
-//     "Написати Дмитру", у которых data-gtm-event нет (без правки HTML на всех страницах).
+// Считаем только прямые переходы на контакты Дмитрия, не футер разработчика.
 function initGtmEvents() {
   window.dataLayer = window.dataLayer || [];
 
-  function eventFromHref(href) {
-    if (!href) return "";
-    if (href.indexOf("t.me/") !== -1) return "click_telegram";
-    if (href.indexOf("wa.me/") !== -1 || href.indexOf("whatsapp") !== -1) return "click_whatsapp";
-    if (href.indexOf("viber:") !== -1) return "click_viber";
+  const allowedContacts = {
+    telegram: "odrad888",
+    whatsapp: "380639646753",
+    viber: "380639646753",
+  };
+
+  function normalizedHref(link) {
+    if (!link) return "";
+    const href = link.getAttribute("href") || "";
+    const value = href || link.href || "";
+    try {
+      return decodeURIComponent(value).toLowerCase();
+    } catch (_err) {
+      return value.toLowerCase();
+    }
+  }
+
+  function isPopupOpener(link, href) {
+    if (!link || !href.includes("t.me/odrad888")) return false;
+    if (link.closest(".fab-item")) return false;
+    return link.classList.contains("btn-primary") || link.classList.contains("footer-cta-btn");
+  }
+
+  function eventFromLink(link, taggedEvent) {
+    const href = normalizedHref(link);
+    if (!href || isPopupOpener(link, href)) return "";
+
+    if (href.includes(`t.me/${allowedContacts.telegram}`)) {
+      return !taggedEvent || taggedEvent === "click_telegram" ? "click_telegram" : "";
+    }
+    if (href.includes(`wa.me/${allowedContacts.whatsapp}`) || (href.includes("whatsapp") && href.includes(allowedContacts.whatsapp))) {
+      return !taggedEvent || taggedEvent === "click_whatsapp" ? "click_whatsapp" : "";
+    }
+    if (href.startsWith("viber:") && href.includes(allowedContacts.viber)) {
+      return !taggedEvent || taggedEvent === "click_viber" ? "click_viber" : "";
+    }
     return "";
   }
 
   document.addEventListener("click", (e) => {
     const tagged = e.target.closest("[data-gtm-event]");
     const link = e.target.closest('a[href]');
-    const event = tagged
-      ? tagged.getAttribute("data-gtm-event")
-      : eventFromHref(link && link.getAttribute("href"));
+    const taggedEvent = tagged && tagged.getAttribute("data-gtm-event");
+    const event = eventFromLink(link, taggedEvent);
     if (!event) return;
+    const label = (tagged && tagged.getAttribute("data-gtm-label")) ||
+                  (link && (link.getAttribute("aria-label") || link.className)) || "";
     window.dataLayer.push({
       event: event,
-      label: (tagged && tagged.getAttribute("data-gtm-label")) ||
-             (link && (link.getAttribute("aria-label") || link.className)) || ""
+      label: label,
+      gtm_label: label
     });
   }, true);
 }
@@ -171,17 +200,6 @@ function initFab() {
     if (e.key === "Escape") closeFab();
   });
 
-  // GTM push on messenger link click
-  wrap.querySelectorAll("a[data-gtm-event]").forEach((link) => {
-    link.addEventListener("click", () => {
-      if (window.dataLayer) {
-        window.dataLayer.push({
-          event: link.dataset.gtmEvent,
-          gtm_label: link.dataset.gtmLabel,
-        });
-      }
-    });
-  });
 }
 
 function initFaqAccordion() {
