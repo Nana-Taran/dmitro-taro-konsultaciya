@@ -1536,34 +1536,6 @@ body.menu-open {
   line-height: 1.4;
 }
 
-.form-consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  color: rgba(244, 234, 220, 0.72);
-  font-size: 12px;
-  line-height: 1.45;
-  cursor: pointer;
-}
-
-.form-consent input {
-  flex: 0 0 auto;
-  width: 16px;
-  height: 16px;
-  margin: 1px 0 0;
-  accent-color: var(--accent-gold, #c9a84c);
-}
-
-.form-consent a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.form-consent.popup-error {
-  color: #ff9c91;
-}
-
 .cta-success {
   display: none;
   align-items: center;
@@ -3139,4 +3111,3 @@ body.menu-open {
   line-height: 1.5;
 }
 .popup-status[hidden] { display: none; }
-.popup-form .form-consent { color: var(--text-secondary); }

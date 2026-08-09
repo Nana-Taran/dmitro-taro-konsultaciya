@@ -83,16 +83,6 @@ function initGtmEvents() {
   }, true);
 }
 
-// Передаем номер только после успешной заявки и явного согласия пользователя.
-function setGoogleTagUserData(phone) {
-  if (!phone) return;
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function () {
-    window.dataLayer.push(arguments);
-  };
-  window.gtag("set", "user_data", { phone_number: phone });
-}
-
 function initCtaForm() {
   const form = document.getElementById("cta-contact-form");
   const success = document.getElementById("cta-success");
@@ -119,7 +109,6 @@ function initCtaForm() {
     const phone     = (form.elements["phone"]?.value     || "").trim();
     const messenger = (form.elements["messenger"]?.value || "").trim();
     const situation = (form.elements["situation"]?.value || "").trim();
-    const consent   = Boolean(form.elements["privacy_consent"]?.checked);
 
     // Validation
     let ok = true;
@@ -130,12 +119,6 @@ function initCtaForm() {
     if (!messenger && ctaMessengers) {
       ctaMessengers.classList.add("popup-error");
       ok = false;
-    }
-    if (!consent) {
-      form.querySelector(".form-consent")?.classList.add("popup-error");
-      ok = false;
-    } else {
-      form.querySelector(".form-consent")?.classList.remove("popup-error");
     }
     if (!ok) return;
 
@@ -166,14 +149,7 @@ function initCtaForm() {
       success.hidden = false;
       setTimeout(() => { success.hidden = true; }, 5000);
 
-      if (consent && window.dataLayer) {
-        setGoogleTagUserData(phone);
-        window.dataLayer.push({
-          event: "form_submit",
-          form_type: "cta",
-          messenger: messenger
-        });
-      }
+      if (window.dataLayer) window.dataLayer.push({ event: "form_submit", form_type: "cta", messenger: messenger });
 
     } catch (_err) {
       const span = success.querySelector("span");
@@ -530,11 +506,6 @@ function initContactPopup() {
             rows="3"></textarea>
         </div>
 
-        <label class="form-consent">
-          <input type="checkbox" name="privacy_consent" required>
-          <span data-ua="Я погоджуюся з <a href=&quot;/privacy/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Політикою конфіденційності</a> та обробкою моїх даних для зв'язку й вимірювання ефективності реклами." data-ru="Я соглашаюсь с <a href=&quot;/privacy/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Политикой конфиденциальности</a> и обработкой моих данных для связи и измерения эффективности рекламы.">Я погоджуюся з <a href="/privacy/" target="_blank" rel="noopener">Політикою конфіденційності</a> та обробкою моїх даних для зв'язку й вимірювання ефективності реклами.</span>
-        </label>
-
         <button type="submit" class="popup-submit"
           data-ua="Надіслати заявку →"
           data-ru="Отправить заявку →">Надіслати заявку →</button>
@@ -614,7 +585,6 @@ function initContactPopup() {
     const name = form.elements["name"];
     const phone = form.elements["phone"];
     const messenger = form.elements["messenger"];
-    const consent = form.elements["privacy_consent"];
     [name, phone].forEach(el => {
       if (!el.value.trim()) { el.classList.add("popup-error"); ok = false; }
       else el.classList.remove("popup-error");
@@ -622,12 +592,6 @@ function initContactPopup() {
     if (!messenger.value) {
       document.getElementById("popup-messengers").classList.add("popup-error");
       ok = false;
-    }
-    if (!consent.checked) {
-      form.querySelector(".form-consent")?.classList.add("popup-error");
-      ok = false;
-    } else {
-      form.querySelector(".form-consent")?.classList.remove("popup-error");
     }
     return ok;
   }
@@ -666,14 +630,7 @@ function initContactPopup() {
       }
       form.querySelector(".popup-submit").style.display = "none";
       status.hidden = false;
-      if (window.dataLayer) {
-        setGoogleTagUserData(payload.phone);
-        window.dataLayer.push({
-          event: "form_submit",
-          form_type: "popup",
-          messenger: payload.messenger
-        });
-      }
+      if (window.dataLayer) window.dataLayer.push({ event: "form_submit", form_type: "popup", messenger: payload.messenger });
       setTimeout(closePopup, 3500);
     } catch {
       submit.disabled = false;
